@@ -20,7 +20,7 @@ export default function SheetDemo() {
       <Content />
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline">Open</Button>
+          <Button variant="outline">MENU</Button>
         </SheetTrigger>
         <SheetContent side="right">
           <SheetHeader>

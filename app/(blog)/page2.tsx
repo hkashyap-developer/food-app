@@ -6,7 +6,7 @@ import CoverImage from "./cover-image";
 import DateComponent from "./date";
 import MoreStories from "./more-stories";
 import Onboarding from "./onboarding";
-import PortableText from "./portable-text";
+import PortableText from "../../components/custom/footer/portable-text";
 
 import type { HeroQueryResult } from "@/sanity.types";
 import * as demo from "@/sanity/lib/demo";
@@ -44,10 +44,11 @@ function Intro(props: { title: string | null | undefined; description: any }) {
             <div className="my-auto">{title || demo.title}</div>
           </Link>
         </div>
+        <div className="">
+          <MobileMenu />
+        </div>
       </div>
-      <div className="">
-        <MobileMenu />
-      </div>
+
       <section className="mt-16 mb-16 flex flex-col items-center lg:mb-12 lg:flex-row lg:justify-between">
         <Link href="/" className="hover:underline">
           <h1 className="text-balance text-6xl font-bold leading-tight tracking-tighter lg:pr-8 lg:text-8xl">
