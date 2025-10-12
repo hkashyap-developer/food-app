@@ -20,15 +20,18 @@ function Intro(props: { title: string | null | undefined; description: any }) {
     : demo.description;
   return (
     <section className="mt-16 mb-16 flex flex-col items-center lg:mb-12 lg:flex-row lg:justify-between">
-      <h1 className="text-balance text-6xl font-bold leading-tight tracking-tighter lg:pr-8 lg:text-8xl">
-        {title || demo.title} test
-      </h1>
+      <Link href="/" className="hover:underline">
+        <h1 className="text-balance text-6xl font-bold leading-tight tracking-tighter lg:pr-8 lg:text-8xl">
+          {title || demo.title}
+        </h1>
+      </Link>
       <h2 className="text-pretty mt-5 text-center text-lg lg:pl-8 lg:text-left">
         <PortableText
           className="prose-lg"
           value={description?.length ? description : demo.description}
         />
       </h2>
+      test
     </section>
   );
 }
@@ -46,7 +49,7 @@ function HeroPost({
 >) {
   return (
     <article>
-      <Link className="group mb-8 block md:mb-16" href={`/posts/${slug}`}>
+      <Link className="group mb-8 block md:mb-16" href={`/product/${slug}`}>
         <CoverImage image={coverImage} priority />
       </Link>
       <div className="mb-20 md:mb-28 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8">
@@ -57,7 +60,7 @@ function HeroPost({
             </Link>
           </h3>
           <div className="mb-4 text-lg md:mb-0">
-            <DateComponent dateString={date} />
+            Prepared On: <DateComponent dateString={date} />
           </div>
         </div>
         <div>
