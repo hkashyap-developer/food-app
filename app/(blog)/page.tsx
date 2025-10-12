@@ -14,12 +14,23 @@ import { sanityFetch } from "@/sanity/lib/fetch";
 import { heroQuery, settingsQuery } from "@/sanity/lib/queries";
 import Image from "next/image";
 import { client } from "@/sanity/lib/client";
-const settings = await client.fetch(settingsQuery);
-function Intro(props: { title: string | null | undefined; description: any }) {
+
+type SettingsQueryResult = {
+  title: string | null;
+  description: any;
+  favicon: string | null;
+};
+
+async function Intro(props: {
+  title: string | null | undefined;
+  description: any;
+}) {
   const title = props.title || demo.title;
   const description = props.description?.length
     ? props.description
     : demo.description;
+  const settings: SettingsQueryResult | null =
+    await client.fetch(settingsQuery);
 
   return (
     <>
@@ -27,12 +38,13 @@ function Intro(props: { title: string | null | undefined; description: any }) {
         <div className="">
           <Link href="/" className="flex flex-row gap-2">
             <Image
-              src={settings.favicon}
+              src={settings?.favicon || "/default-favicon.png"} // fallback string
               alt="Favicon"
               width={32}
               height={32}
               className="rounded"
             />
+
             <div className="my-auto">{title || demo.title}</div>
           </Link>
         </div>
