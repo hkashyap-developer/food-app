@@ -17,7 +17,7 @@ import * as demo from "@/sanity/lib/demo";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { settingsQuery } from "@/sanity/lib/queries";
 import { resolveOpenGraphImage } from "@/sanity/lib/utils";
-
+import Header from "@/components/custom/header/header";
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await sanityFetch({
     query: settingsQuery,
@@ -71,7 +71,8 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} bg-white text-black`}>
       <body>
-        <section className="min-h-screen">
+        <Header />
+        <section className="">
           {isDraftMode && <AlertBanner />}
           <main>{children}</main>
           <footer className="bg-accent-1 border-accent-2 border-t">
