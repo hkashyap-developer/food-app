@@ -26,7 +26,7 @@ const header = (props: {
     : demo.description;
   return (
     <div>
-      <div className="border-b py-6 flex flex-row justify-between align-center mx-4">
+      <div className="fixed top-0 w-full border-b py-6 flex flex-row justify-between align-center px-4 bg-white">
         <div className="">
           <Link href="/" className="flex flex-row gap-2">
             <Image
