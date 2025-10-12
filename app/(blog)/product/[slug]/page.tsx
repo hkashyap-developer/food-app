@@ -65,12 +65,7 @@ export default async function PostPage({ params }: Props) {
   }
 
   return (
-    <div className="container mx-auto px-5">
-      <h2 className="mb-16 mt-10 text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter">
-        <Link href="/" className="hover:underline">
-          {settings?.title || demo.title}
-        </Link>
-      </h2>
+    <div className="max-w-6xl mx-auto px-4 py-12">
       <article>
         <h1 className="text-balance mb-12 text-6xl font-bold leading-tight tracking-tighter md:text-7xl md:leading-none lg:text-8xl">
           {post.title}
@@ -97,12 +92,13 @@ export default async function PostPage({ params }: Props) {
         </div>
         {post.content?.length && (
           <PortableText
-            className="mx-auto max-w-2xl"
+            className="text-justify mx-auto max-w-2xl text-base"
             value={post.content as PortableTextBlock[]}
           />
         )}
       </article>
       <aside>
+        {/*
         <hr className="border-accent-2 mb-24 mt-28" />
         <h2 className="mb-8 text-6xl font-bold leading-tight tracking-tighter md:text-7xl">
           Recent Dishes
@@ -110,6 +106,7 @@ export default async function PostPage({ params }: Props) {
         <Suspense>
           <MoreStories skip={post._id} limit={2} />
         </Suspense>
+        */}
       </aside>
     </div>
   );

@@ -65,13 +65,13 @@ const Footer = async () => {
               <div className="flex flex-col items-center justify-center lg:w-1/2 lg:flex-row lg:pl-4 gap-12">
                 <a
                   href="https://mediaxinfinity.com"
-                  className="mx-3 text-[12px] hover:underline"
+                  className="mx-3 text-[12px] md:text-[16px] hover:underline"
                 >
                   Powered by Media X Infinity
                 </a>
                 <a
                   href="https://atmnc.in"
-                  className="mx-3 text-[12px] hover:underline"
+                  className="mx-3 text-[12px] md:text-[16px] hover:underline"
                 >
                   Backed buy: ATMNC
                 </a>
