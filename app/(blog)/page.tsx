@@ -50,11 +50,11 @@ function HeroPost({
   "title" | "coverImage" | "date" | "excerpt" | "author" | "slug"
 >) {
   return (
-    <article className="p-8 border mb-20">
-      <Link className="group mb-8 block md:mb-16" href={`/product/${slug}`}>
+    <article className="border mb-20">
+      <Link className="group mb-4 block md:mb-16" href={`/product/${slug}`}>
         <CoverImage image={coverImage} priority />
       </Link>
-      <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8">
+      <div className="px-4 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8">
         <div>
           <h3 className="text-pretty mb-4 text-4xl leading-tight lg:text-6xl">
             <Link href={`/product/${slug}`} className="hover:underline">
@@ -67,7 +67,9 @@ function HeroPost({
         </div>
         <div>
           {excerpt && (
-            <p className="text-pretty text-lg leading-relaxed">{excerpt}</p>
+            <p className="text-pretty text-lg leading-relaxed mb-6">
+              {excerpt}
+            </p>
           )}
           {author && <Avatar name={author.name} picture={author.picture} />}
         </div>
