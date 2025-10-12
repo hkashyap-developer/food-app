@@ -31,7 +31,6 @@ function Intro(props: { title: string | null | undefined; description: any }) {
           value={description?.length ? description : demo.description}
         />
       </h2>
-      test
     </section>
   );
 }
@@ -48,11 +47,11 @@ function HeroPost({
   "title" | "coverImage" | "date" | "excerpt" | "author" | "slug"
 >) {
   return (
-    <article>
+    <article className="p-8 border mb-20">
       <Link className="group mb-8 block md:mb-16" href={`/product/${slug}`}>
         <CoverImage image={coverImage} priority />
       </Link>
-      <div className="mb-20 md:mb-28 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8">
+      <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8">
         <div>
           <h3 className="text-pretty mb-4 text-4xl leading-tight lg:text-6xl">
             <Link href={`/product/${slug}`} className="hover:underline">
@@ -65,9 +64,7 @@ function HeroPost({
         </div>
         <div>
           {excerpt && (
-            <p className="text-pretty mb-4 text-lg leading-relaxed">
-              {excerpt}
-            </p>
+            <p className="text-pretty text-lg leading-relaxed">{excerpt}</p>
           )}
           {author && <Avatar name={author.name} picture={author.picture} />}
         </div>
@@ -102,8 +99,9 @@ export default async function Page() {
       {heroPost?._id && (
         <aside>
           <h2 className="mb-8 text-6xl font-bold leading-tight tracking-tighter md:text-7xl">
-            More Stories
+            Our Dishes
           </h2>
+
           <Suspense>
             <MoreStories skip={heroPost._id} limit={100} />
           </Suspense>

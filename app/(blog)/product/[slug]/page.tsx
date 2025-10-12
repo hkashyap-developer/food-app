@@ -21,7 +21,7 @@ type Props = {
 };
 
 const postSlugs = defineQuery(
-  `*[_type == "post" && defined(slug.current)]{"slug": slug.current}`,
+  `*[_type == "post" && defined(slug.current)]{"slug": slug.current}`
 );
 
 export async function generateStaticParams() {
@@ -34,7 +34,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(
   { params }: Props,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
   const post = await sanityFetch({
     query: postQuery,
@@ -105,7 +105,7 @@ export default async function PostPage({ params }: Props) {
       <aside>
         <hr className="border-accent-2 mb-24 mt-28" />
         <h2 className="mb-8 text-6xl font-bold leading-tight tracking-tighter md:text-7xl">
-          Recent Stories
+          Recent Dishes
         </h2>
         <Suspense>
           <MoreStories skip={post._id} limit={2} />
