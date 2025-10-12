@@ -12,9 +12,6 @@ import type { HeroQueryResult } from "@/sanity.types";
 import * as demo from "@/sanity/lib/demo";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { heroQuery, settingsQuery } from "@/sanity/lib/queries";
-import Image from "next/image";
-import { client } from "@/sanity/lib/client";
-import MobileMenu from "@/components/custom/header/mobile-menu";
 
 type SettingsQueryResult = {
   title: string | null;
@@ -30,25 +27,6 @@ function Intro(props: { title: string | null | undefined; description: any }) {
 
   return (
     <>
-      <div className="border-b py-6 flex flex-row justify-between align-center">
-        <div className="">
-          <Link href="/" className="flex flex-row gap-2">
-            <Image
-              src="/default-favicon.png" // fallback string
-              alt="Favicon"
-              width={32}
-              height={32}
-              className="rounded"
-            />
-
-            <div className="my-auto">{title || demo.title}</div>
-          </Link>
-        </div>
-        <div className="">
-          <MobileMenu />
-        </div>
-      </div>
-
       <section className="mt-16 mb-16 flex flex-col items-center lg:mb-12 lg:flex-row lg:justify-between">
         <Link href="/" className="hover:underline">
           <h1 className="text-balance text-6xl font-bold leading-tight tracking-tighter lg:pr-8 lg:text-8xl">
