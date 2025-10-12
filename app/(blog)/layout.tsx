@@ -90,13 +90,13 @@ export default async function RootLayout({
                   <div className="flex flex-col items-center justify-center lg:w-1/2 lg:flex-row lg:pl-4">
                     <a
                       href="https://atmnc.com"
-                      className="mx-3 mb-6 border border-black bg-black py-3 px-12 font-bold text-white transition-colors duration-200 hover:bg-white hover:text-black lg:mb-0 lg:px-8"
+                      className="mx-3 mb-6 border border-black bg-black py-3 px-12 text-white transition-colors duration-200 hover:bg-white hover:text-black lg:mb-0 lg:px-8"
                     >
                       Backed buy: ATMNC
                     </a>
                     <a
                       href="https://github.com/vercel/next.js/tree/canary/examples/cms-sanity"
-                      className="mx-3 font-bold hover:underline"
+                      className="mx-3 text-[12px] hover:underline"
                     >
                       Powered by Media X Infinity
                     </a>

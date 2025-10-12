@@ -14,20 +14,20 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-const MobileMenu = () => {
+export default function SheetDemo() {
   return (
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="outline">Open</Button>
       </SheetTrigger>
-      <SheetContent side="right">
+      <SheetContent side="right" className="w-[300px] h-full max-h-full">
         <SheetHeader>
           <SheetTitle>Edit profile</SheetTitle>
           <SheetDescription>
             Make changes to your profile here. Click save when you&apos;re done.
           </SheetDescription>
         </SheetHeader>
-        <div className="grid gap-6 px-4 py-2">
+        <div className="grid flex-1 auto-rows-min gap-6 px-4">
           <div className="grid gap-3">
             <Label htmlFor="sheet-demo-name">Name</Label>
             <Input id="sheet-demo-name" defaultValue="Pedro Duarte" />
@@ -37,7 +37,7 @@ const MobileMenu = () => {
             <Input id="sheet-demo-username" defaultValue="@peduarte" />
           </div>
         </div>
-        <SheetFooter className="flex gap-2">
+        <SheetFooter>
           <Button type="submit">Save changes</Button>
           <SheetClose asChild>
             <Button variant="outline">Close</Button>
@@ -46,6 +46,4 @@ const MobileMenu = () => {
       </SheetContent>
     </Sheet>
   );
-};
-
-export default MobileMenu;
+}

@@ -1,149 +1,49 @@
-import Link from "next/link";
-import { Suspense } from "react";
+"use client";
 
-import Avatar from "./avatar";
-import CoverImage from "./cover-image";
-import DateComponent from "./date";
-import MoreStories from "./more-stories";
-import Onboarding from "./onboarding";
-import PortableText from "./portable-text";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
-import type { HeroQueryResult } from "@/sanity.types";
-import * as demo from "@/sanity/lib/demo";
-import { sanityFetch } from "@/sanity/lib/fetch";
-import { heroQuery, settingsQuery } from "@/sanity/lib/queries";
-import Image from "next/image";
-import { client } from "@/sanity/lib/client";
-import MobileMenu from "@/components/custom/header/mobile-menu";
-
-type SettingsQueryResult = {
-  title: string | null;
-  description: any;
-  favicon: string | null;
-};
-
-async function Intro(props: {
-  title: string | null | undefined;
-  description: any;
-}) {
-  const title = props.title || demo.title;
-  const description = props.description?.length
-    ? props.description
-    : demo.description;
-  const settings: SettingsQueryResult | null =
-    await client.fetch(settingsQuery);
-
+export default function SheetDemo() {
   return (
-    <>
-      <div className="border-b py-6 flex flex-row justify-between align-center">
-        <div className="">
-          <Link href="/" className="flex flex-row gap-2">
-            <Image
-              src={settings?.favicon || "/default-favicon.png"} // fallback string
-              alt="Favicon"
-              width={32}
-              height={32}
-              className="rounded"
-            />
-
-            <div className="my-auto">{title || demo.title}</div>
-          </Link>
-        </div>
-      </div>
-      <div className="">
-        <MobileMenu />
-      </div>
-      <section className="mt-16 mb-16 flex flex-col items-center lg:mb-12 lg:flex-row lg:justify-between">
-        <Link href="/" className="hover:underline">
-          <h1 className="text-balance text-6xl font-bold leading-tight tracking-tighter lg:pr-8 lg:text-8xl">
-            {title || demo.title}
-          </h1>
-        </Link>
-        <h2 className="text-pretty mt-5 text-center text-lg lg:pl-8 lg:text-left">
-          <PortableText
-            className="prose-lg"
-            value={description?.length ? description : demo.description}
-          />
-        </h2>
-      </section>
-    </>
-  );
-}
-
-function HeroPost({
-  title,
-  slug,
-  excerpt,
-  coverImage,
-  date,
-  author,
-}: Pick<
-  Exclude<HeroQueryResult, null>,
-  "title" | "coverImage" | "date" | "excerpt" | "author" | "slug"
->) {
-  return (
-    <article className="border mb-20">
-      <Link className="group mb-4 block md:mb-16" href={`/product/${slug}`}>
-        <CoverImage image={coverImage} priority />
-      </Link>
-      <div className="px-4 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8">
-        <div>
-          <h3 className="text-pretty mb-4 text-4xl leading-tight lg:text-6xl">
-            <Link href={`/product/${slug}`} className="hover:underline">
-              {title}
-            </Link>
-          </h3>
-          <div className="mb-4 text-lg md:mb-0">
-            Prepared On: <DateComponent dateString={date} />
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </SheetTrigger>
+      <SheetContent side="right">
+        <SheetHeader>
+          <SheetTitle>Edit profile</SheetTitle>
+          <SheetDescription>
+            Make changes to your profile here. Click save when you&apos;re done.
+          </SheetDescription>
+        </SheetHeader>
+        <div className="grid flex-1 auto-rows-min gap-6 px-4">
+          <div className="grid gap-3">
+            <Label htmlFor="sheet-demo-name">Name</Label>
+            <Input id="sheet-demo-name" defaultValue="Pedro Duarte" />
+          </div>
+          <div className="grid gap-3">
+            <Label htmlFor="sheet-demo-username">Username</Label>
+            <Input id="sheet-demo-username" defaultValue="@peduarte" />
           </div>
         </div>
-        <div>
-          {excerpt && (
-            <p className="text-pretty text-lg leading-relaxed mb-6">
-              {excerpt}
-            </p>
-          )}
-          {author && <Avatar name={author.name} picture={author.picture} />}
-        </div>
-      </div>
-    </article>
-  );
-}
-
-export default async function Page() {
-  const [settings, heroPost] = await Promise.all([
-    sanityFetch({
-      query: settingsQuery,
-    }),
-    sanityFetch({ query: heroQuery }),
-  ]);
-
-  return (
-    <div className="container mx-auto px-5">
-      <Intro title={settings?.title} description={settings?.description} />
-      {heroPost ? (
-        <HeroPost
-          title={heroPost.title}
-          slug={heroPost.slug}
-          coverImage={heroPost.coverImage}
-          excerpt={heroPost.excerpt}
-          date={heroPost.date}
-          author={heroPost.author}
-        />
-      ) : (
-        <Onboarding />
-      )}
-      {heroPost?._id && (
-        <aside>
-          <h2 className="mb-8 text-6xl font-bold leading-tight tracking-tighter md:text-7xl">
-            Our Dishes
-          </h2>
-
-          <Suspense>
-            <MoreStories skip={heroPost._id} limit={100} />
-          </Suspense>
-        </aside>
-      )}
-    </div>
+        <SheetFooter>
+          <Button type="submit">Save changes</Button>
+          <SheetClose asChild>
+            <Button variant="outline">Close</Button>
+          </SheetClose>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
   );
 }
