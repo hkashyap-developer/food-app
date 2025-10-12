@@ -10,6 +10,24 @@ export default defineType({
   icon: CogIcon,
   fields: [
     defineField({
+      name: "favicon",
+      title: "Favicon",
+      type: "image",
+      options: {
+        hotspot: false, // Allows cropping in Sanity Studio
+      },
+      fields: [
+        {
+          name: "alt",
+          title: "Alt text",
+          type: "string",
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
+    }),
+    defineField({
       name: "title",
       description: "This field is the title of your blog.",
       title: "Title",
