@@ -1,11 +1,51 @@
 import React from "react";
+import type { Metadata } from "next";
 import {
   VisualEditing,
   toPlainText,
   type PortableTextBlock,
 } from "next-sanity";
 import PortableText from "./portable-text";
-const footer = () => {
+import { settingsQuery } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/fetch";
+import { resolveOpenGraphImage } from "@/sanity/lib/utils";
+import * as demo from "@/sanity/lib/demo";
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await sanityFetch({
+    query: settingsQuery,
+    // Metadata should never contain stega
+    stega: false,
+  });
+  const title = settings?.title || demo.title;
+  const description = settings?.description || demo.description;
+
+  const ogImage = resolveOpenGraphImage(settings?.ogImage);
+
+  let metadataBase: URL | undefined = undefined;
+
+  try {
+    // If settings.ogImage is a string, pass it directly to the URL constructor
+    if (settings?.ogImage) {
+      metadataBase = new URL(settings.ogImage);
+    }
+  } catch (error) {
+    metadataBase = undefined;
+  }
+
+  return {
+    metadataBase,
+    title: {
+      template: `%s | ${title}`,
+      default: title,
+    },
+    description: toPlainText(description),
+    openGraph: {
+      images: ogImage ? [ogImage] : [],
+    },
+  };
+}
+const Footer = async () => {
+  const data = await sanityFetch({ query: settingsQuery });
   const footer = data?.footer || [];
   return (
     <div>
@@ -44,4 +84,4 @@ const footer = () => {
   );
 };
 
-export default footer;
+export default Footer;
