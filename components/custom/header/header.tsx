@@ -34,7 +34,7 @@ const header = (props: {
               alt="Favicon"
               width={32}
               height={32}
-              className="rounded"
+              className=""
             />
 
             <div className="my-auto">{title || demo.title}</div>
