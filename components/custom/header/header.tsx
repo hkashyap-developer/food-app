@@ -30,7 +30,7 @@ const header = (props: {
         <div className="flex">
           <Link href="/" className="my-auto flex flex-row gap-2">
             <Image
-              src="/favicon.svg" // fallback string
+              src="/favicon.png" // fallback string
               alt="Favicon"
               width={32}
               height={32}
