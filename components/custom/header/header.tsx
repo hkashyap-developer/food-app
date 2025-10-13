@@ -26,9 +26,9 @@ const header = (props: {
     : demo.description;
   return (
     <div>
-      <div className="fixed top-0 w-full border-b py-6 flex flex-row justify-between align-center px-4 bg-white">
-        <div className="">
-          <Link href="/" className="flex flex-row gap-2">
+      <div className="min-h-20 fixed top-0 w-full border-b py-auto flex flex-row justify-between align-center px-4 bg-white">
+        <div className="flex">
+          <Link href="/" className="my-auto flex flex-row gap-2">
             <Image
               src="/favicon.svg" // fallback string
               alt="Favicon"
@@ -40,10 +40,11 @@ const header = (props: {
             <div className="my-auto">{title || demo.title}</div>
           </Link>
         </div>
-        <div className="">
+        <div className="my-auto">
           <MobileMenu />
         </div>
       </div>
+      <div className="min-h-20"></div>
     </div>
   );
 };

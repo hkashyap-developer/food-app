@@ -1,17 +1,11 @@
 import { defineQuery } from "next-sanity";
 import type { Metadata, ResolvingMetadata } from "next";
 import { type PortableTextBlock } from "next-sanity";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
-
 import Avatar from "../../avatar";
 import CoverImage from "../../cover-image";
 import DateComponent from "../../date";
-import MoreStories from "../../more-stories";
 import PortableText from "../../../../components/custom/footer/portable-text";
-
-import * as demo from "@/sanity/lib/demo";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { postQuery, settingsQuery } from "@/sanity/lib/queries";
 import { resolveOpenGraphImage } from "@/sanity/lib/utils";
@@ -92,7 +86,7 @@ export default async function PostPage({ params }: Props) {
         </div>
         {post.content?.length && (
           <PortableText
-            className="text-justify mx-auto max-w-2xl text-base"
+            className="mx-auto max-w-2xl text-base"
             value={post.content as PortableTextBlock[]}
           />
         )}

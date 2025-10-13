@@ -22,7 +22,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={`${inter.variable} bg-white text-black`}>
-      <body>
+      <body className="">
         <Header title="MarketVisit" description="Welcome to my page" />
 
         <section className="">
