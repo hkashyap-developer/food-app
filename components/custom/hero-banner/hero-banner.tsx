@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default function Hero() {
   return (
-    <section className="w-full bg-background py-8 md:py-32">
+    <section className="w-full bg-background py-8 md:py-20">
       <div className="container mx-auto px-4 flex flex-col-reverse md:flex-row items-center gap-12">
         {/* Text Section */}
         <div className="flex-1 text-center md:text-left space-y-6">
@@ -19,10 +19,10 @@ export default function Hero() {
             solutions designed to convert and impress.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <Button size="lg" className="rounded-full px-8">
+            <Button size="lg" className="px-8">
               Get Started
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-8">
+            <Button size="lg" variant="outline" className="px-8">
               Learn More
             </Button>
           </div>
@@ -30,14 +30,14 @@ export default function Hero() {
 
         {/* Image Section */}
         <div className="flex-1 flex justify-center md:justify-end">
-          <Card className="overflow-hidden border-0 shadow-xl rounded-3xl max-w-md w-full">
+          <Card className="overflow-hidden border-0 max-w-md w-full">
             <CardContent className="p-0">
               <Image
                 src="/favicon.png"
                 alt="Hero Image"
-                width={600}
-                height={400}
-                className="object-cover w-full h-full"
+                width={800}
+                height={800}
+                className="rounded-none object-cover w-full h-full"
                 priority
               />
             </CardContent>

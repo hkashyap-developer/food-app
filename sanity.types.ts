@@ -13,14 +13,15 @@
  */
 
 // Source: schema.json
-export type Home = {
+export type HeroBanner = {
   _id: string;
-  _type: "home";
+  _type: "heroBanner";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name?: string;
-  picture?: {
+  title?: string;
+  description?: string;
+  backgroundImage?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -32,6 +33,16 @@ export type Home = {
     crop?: SanityImageCrop;
     alt?: string;
     _type: "image";
+  };
+  ctaPrimary?: {
+    label?: string;
+    url?: string;
+    newTab?: boolean;
+  };
+  ctaSecondary?: {
+    label?: string;
+    url?: string;
+    newTab?: boolean;
   };
 };
 
@@ -417,7 +428,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Home | Post | Author | Settings | SanityAssistInstructionTask | SanityAssistTaskStatus | SanityAssistSchemaTypeAnnotations | SanityAssistOutputType | SanityAssistOutputField | SanityAssistInstructionContext | AssistInstructionContext | SanityAssistInstructionUserInput | SanityAssistInstructionPrompt | SanityAssistInstructionFieldRef | SanityAssistInstruction | SanityAssistSchemaTypeField | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = HeroBanner | Post | Author | Settings | SanityAssistInstructionTask | SanityAssistTaskStatus | SanityAssistSchemaTypeAnnotations | SanityAssistOutputType | SanityAssistOutputField | SanityAssistInstructionContext | AssistInstructionContext | SanityAssistInstructionUserInput | SanityAssistInstructionPrompt | SanityAssistInstructionFieldRef | SanityAssistInstruction | SanityAssistSchemaTypeField | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./app/(blog)/product/[slug]/page.tsx
 // Variable: postSlugs
@@ -623,6 +634,9 @@ export type PostQueryResult = {
     } | null;
   } | null;
 } | null;
+// Variable: catBannerQuery
+// Query: *[_type == "cat-banner"][0]{    title,    description,    picture{      asset->{        url,        metadata { dimensions }      },      alt    },    button{      label,      url,      style,      newTab    }  }
+export type CatBannerQueryResult = null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -633,5 +647,6 @@ declare module "@sanity/client" {
     "\n  *[_type == \"post\" && defined(slug.current)] | order(date desc, _updatedAt desc) [0] {\n    content,\n    \n  _id,\n  \"status\": select(_originalId in path(\"drafts.**\") => \"draft\", \"published\"),\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage,\n  \"date\": coalesce(date, _updatedAt),\n  \"author\": author->{\"name\": coalesce(name, \"Anonymous\"), picture},\n\n  }\n": HeroQueryResult;
     "\n  *[_type == \"post\" && _id != $skip && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {\n    \n  _id,\n  \"status\": select(_originalId in path(\"drafts.**\") => \"draft\", \"published\"),\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage,\n  \"date\": coalesce(date, _updatedAt),\n  \"author\": author->{\"name\": coalesce(name, \"Anonymous\"), picture},\n\n  }\n": MoreStoriesQueryResult;
     "\n  *[_type == \"post\" && slug.current == $slug] [0] {\n    content,\n    \n  _id,\n  \"status\": select(_originalId in path(\"drafts.**\") => \"draft\", \"published\"),\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage,\n  \"date\": coalesce(date, _updatedAt),\n  \"author\": author->{\"name\": coalesce(name, \"Anonymous\"), picture},\n\n  }\n": PostQueryResult;
+    "\n  *[_type == \"cat-banner\"][0]{\n    title,\n    description,\n    picture{\n      asset->{\n        url,\n        metadata { dimensions }\n      },\n      alt\n    },\n    button{\n      label,\n      url,\n      style,\n      newTab\n    }\n  }\n": CatBannerQueryResult;
   }
 }
