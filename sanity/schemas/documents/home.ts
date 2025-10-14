@@ -1,32 +1,40 @@
-import { UserIcon } from "@sanity/icons";
+import { MegaphoneIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "cat-banner",
-  title: "CTA Banner",
-  icon: UserIcon,
+  name: "heroBanner",
+  title: "Hero Banner",
+  icon: MegaphoneIcon,
   type: "document",
   fields: [
     defineField({
-      name: "name",
-      title: "Name",
+      name: "title",
+      title: "Title",
       type: "string",
       validation: (rule) => rule.required(),
     }),
 
     defineField({
-      name: "picture",
-      title: "Picture",
+      name: "description",
+      title: "Description",
+      type: "text",
+      rows: 3,
+      validation: (rule) => rule.required(),
+    }),
+
+    defineField({
+      name: "backgroundImage",
+      title: "Background Image",
       type: "image",
       fields: [
         {
           name: "alt",
           type: "string",
-          title: "Alternative text",
+          title: "Alternative Text",
           description: "Important for SEO and accessibility.",
           validation: (rule) =>
             rule.custom((alt, context) => {
-              if ((context.document?.picture as any)?.asset?._ref && !alt) {
+              if ((context.document?.backgroundImage as any)?.asset?._ref && !alt) {
                 return "Required";
               }
               return true;
@@ -35,17 +43,39 @@ export default defineType({
       ],
       options: {
         hotspot: true,
-        aiAssist: {
-          imageDescriptionField: "alt",
-        },
       },
       validation: (rule) => rule.required(),
     }),
 
-    // 🔽 Button field added here
     defineField({
-      name: "button",
-      title: "CTA Button",
+      name: "ctaPrimary",
+      title: "Primary CTA Button",
+      type: "object",
+      fields: [
+        {
+          name: "label",
+          title: "Button Label",
+          type: "string",
+          validation: (rule) => rule.required(),
+        },
+        {
+          name: "url",
+          title: "Button URL",
+          type: "url",
+          validation: (rule) => rule.required(),
+        },
+        {
+          name: "newTab",
+          title: "Open in New Tab",
+          type: "boolean",
+          initialValue: false,
+        },
+      ],
+    }),
+
+    defineField({
+      name: "ctaSecondary",
+      title: "Secondary CTA Button",
       type: "object",
       fields: [
         {
