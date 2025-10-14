@@ -41,13 +41,7 @@ const Ctabanner = (props: {
           href={button.url}
           target={button.newTab ? "_blank" : "_self"}
           rel={button.newTab ? "noopener noreferrer" : undefined}
-          className={`max-w-min mx-auto inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
-            button.style === "primary"
-              ? ""
-              : button.style === "secondary"
-                ? "bg-gray-200 text-black hover:bg-gray-300"
-                : "border border-black text-black hover:bg-black hover:text-white"
-          }`}
+          className={`max-w-min mx-auto inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-200 `}
         >
           <Button variant="outline">{button.label}</Button>
         </a>

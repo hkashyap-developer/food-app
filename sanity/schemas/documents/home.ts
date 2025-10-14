@@ -61,20 +61,6 @@ export default defineType({
           validation: (rule) => rule.required(),
         },
         {
-          name: "style",
-          title: "Button Style",
-          type: "string",
-          options: {
-            list: [
-              { title: "Primary", value: "primary" },
-              { title: "Secondary", value: "secondary" },
-              { title: "Outline", value: "outline" },
-            ],
-            layout: "radio",
-          },
-          initialValue: "primary",
-        },
-        {
           name: "newTab",
           title: "Open in New Tab",
           type: "boolean",
