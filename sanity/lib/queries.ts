@@ -40,3 +40,25 @@ export const postQuery = defineQuery(`
     ${postFields}
   }
 `);
+
+
+// 🆕 Add this CTA Banner query
+export const catBannerQuery = defineQuery(`
+  *[_type == "cat-banner"][0]{
+    title,
+    description,
+    picture{
+      asset->{
+        url,
+        metadata { dimensions }
+      },
+      alt
+    },
+    button{
+      label,
+      url,
+      style,
+      newTab
+    }
+  }
+`);

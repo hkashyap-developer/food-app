@@ -1,24 +1,20 @@
 import Content from "./content";
-import Banner from "@/components/custom/home-banner/home-banner";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { client } from "@/sanity/lib/client";
+import { catBannerQuery } from "@/sanity/lib/queries";
+import Ctabanner from "@/components/custom/cta-banner/cta-banner";
 
-export default function SheetDemo() {
+export default async function SheetDemo() {
+  const banner = await client.fetch(catBannerQuery);
+
+  console.log("Banner data:", banner); // ✅ Check this in console
   return (
     <>
-      <Banner />
       <Content />
+      <Ctabanner
+        title={banner.title}
+        description={banner.description}
+        button={banner.button}
+      />
     </>
   );
 }
