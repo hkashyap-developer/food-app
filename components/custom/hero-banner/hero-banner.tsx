@@ -23,7 +23,7 @@ const Herobanner = (props: {
       <div className="container mx-auto px-4 flex flex-col-reverse md:flex-row items-center gap-12">
         {/* Text Section */}
         <div className="flex-1 text-center md:text-left space-y-6">
-          {title && <h1 className="text-4xl md:text-6xl font-bold">{title}</h1>}
+          {title && <h1 className="text-6xl md:text-7xl font-bold">{title}</h1>}
           {description && (
             <p className="text-muted-foreground text-lg md:text-xl max-w-md mx-auto md:mx-0">
               {description}

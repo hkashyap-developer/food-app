@@ -26,7 +26,7 @@ const header = (props: {
     : demo.description;
   return (
     <div>
-      <div className="min-h-20 fixed top-0 w-full border-b py-auto flex flex-row justify-between align-center px-4 bg-white">
+      <div className="z-50 min-h-20 fixed top-0 w-full border-b py-auto flex flex-row justify-between align-center px-4 bg-white">
         <div className="flex">
           <Link href="/" className="my-auto flex flex-row gap-2">
             <Image

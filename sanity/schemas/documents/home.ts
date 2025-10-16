@@ -66,5 +66,40 @@ export default defineType({
         { name: "link", title: "Button Link", type: "url", validation: (r) => r.required() },
       ],
     }),
+
+
+
+
+
+defineField({
+  name: "headings",
+  title: "Headings",
+  type: "array",
+  of: [
+    {
+      type: "object",
+      name: "headingItem",
+      fields: [
+        defineField({
+          name: "title",
+          title: "Heading Title",
+          type: "string",
+          validation: (r) => r.required().min(3).max(80),
+        }),
+        defineField({
+          name: "subheading",
+          title: "Subheading",
+          type: "string",
+        }),
+      ],
+    },
+  ],
+}),
+
+
+
+
+
+
   ],
 });
