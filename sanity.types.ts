@@ -21,7 +21,7 @@ export type Herosection = {
   _rev: string;
   heading?: string;
   description?: string;
-  image?: {
+  coverImage?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -636,23 +636,11 @@ export type PostQueryResult = {
 // Query: *[_type == "cat-banner"][0]{    title,    description,    picture{      asset->{        url,        metadata { dimensions }      },      alt    },    button{      label,      url,      style,      newTab    }  }
 export type CatBannerQueryResult = null;
 // Variable: heroSectionQuery
-// Query: *[_type == "herosection"][0]{    heading,    description,    image{      asset->{        url,        metadata { dimensions }      },      alt    },    buttonOne{      label,      link    },    buttonTwo{      label,      link    }  }
+// Query: *[_type == "herosection"][0]{    title,    description,    "coverImage": coverImage.asset->url,     buttonTwo{      label,      link    }  }
 export type HeroSectionQueryResult = {
-  heading: string | null;
+  title: null;
   description: string | null;
-  image: {
-    asset: {
-      url: string | null;
-      metadata: {
-        dimensions: SanityImageDimensions | null;
-      } | null;
-    } | null;
-    alt: string | null;
-  } | null;
-  buttonOne: {
-    label: string | null;
-    link: string | null;
-  } | null;
+  coverImage: string | null;
   buttonTwo: {
     label: string | null;
     link: string | null;
@@ -669,6 +657,6 @@ declare module "@sanity/client" {
     "\n  *[_type == \"post\" && _id != $skip && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {\n    \n  _id,\n  \"status\": select(_originalId in path(\"drafts.**\") => \"draft\", \"published\"),\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage,\n  \"date\": coalesce(date, _updatedAt),\n  \"author\": author->{\"name\": coalesce(name, \"Anonymous\"), picture},\n\n  }\n": MoreStoriesQueryResult;
     "\n  *[_type == \"post\" && slug.current == $slug] [0] {\n    content,\n    \n  _id,\n  \"status\": select(_originalId in path(\"drafts.**\") => \"draft\", \"published\"),\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage,\n  \"date\": coalesce(date, _updatedAt),\n  \"author\": author->{\"name\": coalesce(name, \"Anonymous\"), picture},\n\n  }\n": PostQueryResult;
     "\n  *[_type == \"cat-banner\"][0]{\n    title,\n    description,\n    picture{\n      asset->{\n        url,\n        metadata { dimensions }\n      },\n      alt\n    },\n    button{\n      label,\n      url,\n      style,\n      newTab\n    }\n  }\n": CatBannerQueryResult;
-    "\n  *[_type == \"herosection\"][0]{\n    heading,\n    description,\n    image{\n      asset->{\n        url,\n        metadata { dimensions }\n      },\n      alt\n    },\n    buttonOne{\n      label,\n      link\n    },\n    buttonTwo{\n      label,\n      link\n    }\n  }\n": HeroSectionQueryResult;
+    "\n  *[_type == \"herosection\"][0]{\n    title,\n    description,\n    \"coverImage\": coverImage.asset->url, \n    buttonTwo{\n      label,\n      link\n    }\n  }\n": HeroSectionQueryResult;
   }
 }

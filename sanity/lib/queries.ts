@@ -64,21 +64,10 @@ export const catBannerQuery = defineQuery(`
 `);
 
 export const heroSectionQuery = defineQuery(`
-  *[_type == "heroSection"][0]{
-    title,
+  *[_type == "herosection"][0]{
+    heading,
     description,
-"coverImage": coverImage{
-  asset->{
-    url,
-    metadata { dimensions, lqip }
-  },
-  alt
-}, 
-
-    buttonOne{
-      label,
-      link
-    },
+    "coverImage": coverImage.asset->url, 
     buttonTwo{
       label,
       link

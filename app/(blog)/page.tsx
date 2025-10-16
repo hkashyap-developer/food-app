@@ -8,16 +8,15 @@ import Herobanner from "@/components/custom/hero-banner/hero-banner";
 export default async function SheetDemo() {
   const herobanner = await client.fetch(heroSectionQuery);
   const banner = await client.fetch(catBannerQuery);
-  console.log("Banner data 1:", herobanner); // ✅ Check this in console
-  console.log("Banner data:", banner); // ✅ Check this in console
+  console.log("test22", herobanner.heading);
   return (
     <>
       <Herobanner
-        title={herobanner.title}
+        title={herobanner.heading}
         description={herobanner.description}
         buttonOne={herobanner.buttonOne}
         buttonTwo={herobanner.buttonTwo}
-        image={herobanner.image}
+        coverImage={herobanner.coverImage} // ✅ pass only the URL
       />
       <Content />
       <Ctabanner
