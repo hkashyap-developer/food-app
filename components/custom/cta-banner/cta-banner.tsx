@@ -13,17 +13,19 @@ type ButtonType = {
 const Ctabanner = (props: {
   title?: string | null;
   description?: any;
-  button?: ButtonType;
+  buttonOne?: ButtonType;
+  buttonTwo?: ButtonType;
 }) => {
   const title = props.title || demo.title;
   const description = props.description || demo.description;
-  const button = props.button;
+  const buttonOne = props.buttonOne;
+  const buttonTwo = props.buttonOne;
 
   return (
-    <div className="bg-gray-100 flex flex-col justify-center min-h-80 container mx-auto px-4 text-center sm:mb-20">
+    <div className="bg-gray-100 flex flex-col justify-center min-h-[600px] container mx-auto px-8 text-left sm:mb-20">
       {/* Title */}
       {title && (
-        <h2 className="text-pretty mt-5 mb-4 text-lg lg:text-2xl font-semibold">
+        <h2 className="text-pretty mt-5 mb-4 text-lg lg:text-4xl font-semibold">
           {title}
         </h2>
       )}
@@ -31,19 +33,19 @@ const Ctabanner = (props: {
       {/* Description */}
       {description && (
         <div className="mb-8">
-          <PortableText className="prose-lg mx-auto" value={description} />
+          <PortableText className="prose-lg " value={description} />
         </div>
       )}
 
       {/* CTA Button */}
-      {button?.label && (
+      {buttonOne?.label && (
         <a
-          href={button.url}
-          target={button.newTab ? "_blank" : "_self"}
-          rel={button.newTab ? "noopener noreferrer" : undefined}
-          className={`max-w-min mx-auto inline-block px-6 py-3 rounded-lg font-semibold transition-all duration-200 `}
+          href={buttonOne.url}
+          target={buttonOne.newTab ? "_blank" : "_self"}
+          rel={buttonOne.newTab ? "noopener noreferrer" : undefined}
+          className={`max-w-min inline-block py-3 rounded-lg font-semibold transition-all duration-200 `}
         >
-          <Button variant="outline">{button.label}</Button>
+          <Button variant="outline">{buttonOne.label}</Button>
         </a>
       )}
     </div>

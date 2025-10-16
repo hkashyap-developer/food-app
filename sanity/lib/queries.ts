@@ -62,3 +62,27 @@ export const catBannerQuery = defineQuery(`
     }
   }
 `);
+
+export const heroSectionQuery = defineQuery(`
+  *[_type == "heroSection"][0]{
+    title,
+    description,
+"coverImage": coverImage{
+  asset->{
+    url,
+    metadata { dimensions, lqip }
+  },
+  alt
+}, 
+
+    buttonOne{
+      label,
+      link
+    },
+    buttonTwo{
+      label,
+      link
+    }
+  }
+`);
+

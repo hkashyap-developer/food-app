@@ -1,101 +1,69 @@
-import { MegaphoneIcon } from "@sanity/icons";
+import { DocumentIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "heroBanner",
-  title: "Hero Banner",
-  icon: MegaphoneIcon,
+  name: "herosection",
+  title: "Herosection",
+  icon: DocumentIcon,
   type: "document",
   fields: [
     defineField({
-      name: "title",
-      title: "Title",
+      name: "heading",
+      title: "Heading",
       type: "string",
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().min(5).max(80),
     }),
-
     defineField({
       name: "description",
       title: "Description",
       type: "text",
       rows: 3,
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().min(10).max(200),
     }),
-
     defineField({
-      name: "backgroundImage",
-      title: "Background Image",
+      name: "coverImage",
+      title: "Cover Image",
       type: "image",
+      options: {
+        hotspot: true,
+        aiAssist: {
+          imageDescriptionField: "alt",
+        },
+      },
       fields: [
         {
           name: "alt",
           type: "string",
-          title: "Alternative Text",
-          description: "Important for SEO and accessibility.",
-          validation: (rule) =>
-            rule.custom((alt, context) => {
-              if ((context.document?.backgroundImage as any)?.asset?._ref && !alt) {
+          title: "Alternative text",
+          description: "Important for SEO and accessiblity.",
+          validation: (rule) => {
+            return rule.custom((alt, context) => {
+              if ((context.document?.coverImage as any)?.asset?._ref && !alt) {
                 return "Required";
               }
               return true;
-            }),
+            });
+          },
         },
       ],
-      options: {
-        hotspot: true,
-      },
       validation: (rule) => rule.required(),
     }),
-
     defineField({
-      name: "ctaPrimary",
-      title: "Primary CTA Button",
+      name: "buttonOne",
+      title: "Primary Button",
       type: "object",
       fields: [
-        {
-          name: "label",
-          title: "Button Label",
-          type: "string",
-          validation: (rule) => rule.required(),
-        },
-        {
-          name: "url",
-          title: "Button URL",
-          type: "url",
-          validation: (rule) => rule.required(),
-        },
-        {
-          name: "newTab",
-          title: "Open in New Tab",
-          type: "boolean",
-          initialValue: false,
-        },
+        { name: "label", title: "Button Label", type: "string", validation: (r) => r.required() },
+        { name: "link", title: "Button Link", type: "url", validation: (r) => r.required() },
       ],
     }),
-
     defineField({
-      name: "ctaSecondary",
-      title: "Secondary CTA Button",
+      name: "buttonTwo",
+      title: "Secondary Button",
       type: "object",
       fields: [
-        {
-          name: "label",
-          title: "Button Label",
-          type: "string",
-          validation: (rule) => rule.required(),
-        },
-        {
-          name: "url",
-          title: "Button URL",
-          type: "url",
-          validation: (rule) => rule.required(),
-        },
-        {
-          name: "newTab",
-          title: "Open in New Tab",
-          type: "boolean",
-          initialValue: false,
-        },
+        { name: "label", title: "Button Label", type: "string", validation: (r) => r.required() },
+        { name: "link", title: "Button Link", type: "url", validation: (r) => r.required() },
       ],
     }),
   ],

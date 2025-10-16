@@ -1,6 +1,6 @@
 [
   {
-    "name": "heroBanner",
+    "name": "herosection",
     "type": "document",
     "attributes": {
       "_id": {
@@ -13,7 +13,7 @@
         "type": "objectAttribute",
         "value": {
           "type": "string",
-          "value": "heroBanner"
+          "value": "herosection"
         }
       },
       "_createdAt": {
@@ -34,7 +34,7 @@
           "type": "string"
         }
       },
-      "title": {
+      "heading": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
@@ -48,7 +48,7 @@
         },
         "optional": true
       },
-      "backgroundImage": {
+      "image": {
         "type": "objectAttribute",
         "value": {
           "type": "object",
@@ -124,7 +124,7 @@
         },
         "optional": true
       },
-      "ctaPrimary": {
+      "buttonOne": {
         "type": "objectAttribute",
         "value": {
           "type": "object",
@@ -136,17 +136,10 @@
               },
               "optional": true
             },
-            "url": {
+            "link": {
               "type": "objectAttribute",
               "value": {
                 "type": "string"
-              },
-              "optional": true
-            },
-            "newTab": {
-              "type": "objectAttribute",
-              "value": {
-                "type": "boolean"
               },
               "optional": true
             }
@@ -154,7 +147,7 @@
         },
         "optional": true
       },
-      "ctaSecondary": {
+      "buttonTwo": {
         "type": "objectAttribute",
         "value": {
           "type": "object",
@@ -166,17 +159,10 @@
               },
               "optional": true
             },
-            "url": {
+            "link": {
               "type": "objectAttribute",
               "value": {
                 "type": "string"
-              },
-              "optional": true
-            },
-            "newTab": {
-              "type": "objectAttribute",
-              "value": {
-                "type": "boolean"
               },
               "optional": true
             }
