@@ -39,38 +39,16 @@ export default function AddWithQuantityDrawer() {
       <Drawer open={open} onOpenChange={setOpen}>
         <DrawerContent className="p-6">
           <DrawerHeader>
-            <DrawerTitle className="text-lg font-semibold">
-              Adjust Quantity
+            <DrawerTitle className="text-lg font-semibold text-center">
+              Item removed!
             </DrawerTitle>
           </DrawerHeader>
 
-          <div className="flex justify-center items-center gap-4 py-6">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={decrease}
-              className="rounded-full"
-            >
-              <Minus className="h-4 w-4" />
-            </Button>
-
-            <span className="min-w-[2rem] text-center text-base font-semibold">
-              {quantity}
-            </span>
-
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={increase}
-              className="rounded-full"
-            >
-              <Plus className="h-4 w-4" />
-            </Button>
-          </div>
-
           <DrawerFooter className="flex justify-end">
             <DrawerClose asChild>
-              <Button variant="secondary">Done</Button>
+              <Button variant="secondary" className="max-w-min mx-auto">
+                Done
+              </Button>
             </DrawerClose>
           </DrawerFooter>
         </DrawerContent>
