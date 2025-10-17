@@ -29,16 +29,18 @@ const Herobanner = (props: {
               {description}
             </p>
           )}
-          {buttonOne && (
-            <Button variant="outline" className="text-md">
-              {buttonOne.label}
-            </Button>
-          )}
-          {buttonTwo && (
-            <Button variant="outline" className="text-md">
-              {buttonTwo.label}
-            </Button>
-          )}
+          <div className="flex gap-4">
+            {buttonOne && (
+              <Button variant="default" className="text-md">
+                {buttonOne.label}
+              </Button>
+            )}
+            {buttonTwo && (
+              <Button variant="outline" className="text-md">
+                {buttonTwo.label}
+              </Button>
+            )}
+          </div>
         </div>
 
         {/* Image Section */}

@@ -65,7 +65,7 @@ export default async function RootLayout({
       className={`${fontMap[selectedFont] || fontMap.inter} bg-white text-black`}
     >
       <body className="">
-        <Header title="MarketVisit" description="Welcome to my page" />
+        <Header />
 
         <section className="">
           {isDraftMode && <AlertBanner />}
