@@ -29,6 +29,16 @@ const Herobanner = (props: {
               {description}
             </p>
           )}
+          {buttonOne && (
+            <Button variant="outline" className="text-md">
+              {buttonOne.label}
+            </Button>
+          )}
+          {buttonTwo && (
+            <Button variant="outline" className="text-md">
+              {buttonTwo.label}
+            </Button>
+          )}
         </div>
 
         {/* Image Section */}

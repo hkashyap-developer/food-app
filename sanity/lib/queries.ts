@@ -69,10 +69,14 @@ export const heroSectionQuery = defineQuery(`
     heading,
     description,
     "coverImage": coverImage.asset->url, 
+    buttonOne{
+      label,
+      link
+    }, 
     buttonTwo{
       label,
       link
-    }
+    }, 
   }
 `);
 
