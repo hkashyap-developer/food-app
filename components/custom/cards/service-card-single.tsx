@@ -47,7 +47,9 @@ export default function MagicCardDemo() {
         </CardContent>
         <CardFooter className="border-border border-t p-4 [.border-t]:pt-4">
           <div className="flex flex-col gap-4">
-            <Quantityselector />
+            <div className="hidden">
+              <Quantityselector />
+            </div>
             <Singleitemselector />
           </div>
         </CardFooter>

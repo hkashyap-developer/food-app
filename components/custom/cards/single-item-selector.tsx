@@ -30,7 +30,7 @@ export default function AddWithQuantityDrawer() {
       <Button
         onClick={handleAddClick}
         className={`w-32 font-medium transition-all ${
-          added ? "bg-green-500 text-white" : "bg-primary text-white"
+          added ? "bg-white text-black" : "bg-primary text-white"
         }`}
       >
         {added ? "Added" : "+ Add"}
