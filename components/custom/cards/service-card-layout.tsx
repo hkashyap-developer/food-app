@@ -112,7 +112,7 @@ const Gallery6 = ({
             {items.map((item) => (
               <CarouselItem
                 key={item.id}
-                className="ml-8 max-w-[200px] md:max-w-[360px]"
+                className="ml-8 max-w-[240px] md:max-w-[360px]"
               >
                 <Servicecardsingle />
               </CarouselItem>
