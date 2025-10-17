@@ -40,7 +40,7 @@ export default function AddWithQuantityDrawer() {
         <DrawerContent className="p-6">
           <DrawerHeader>
             <DrawerTitle className="text-lg font-semibold text-center">
-              Item removed!
+              {added ? "Item Added" : "Item Removed"}
             </DrawerTitle>
           </DrawerHeader>
 
