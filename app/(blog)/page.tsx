@@ -18,7 +18,7 @@ export default async function SheetDemo() {
     {
       id: 1,
       title: "Ready-to-Use UI Blocks",
-      image: "/faq/1.jpg",
+      image: "/faq/3.jpg",
       description:
         "Browse through our extensive collection of pre-built UI blocks designed with shadcn/ui. Each block is carefully crafted to be responsive, accessible, and easily customizable. Simply copy and paste the code into your project.",
     },
@@ -32,7 +32,7 @@ export default async function SheetDemo() {
     {
       id: 3,
       title: "Dark Mode & Customization",
-      image: "/faq/3.jpg",
+      image: "/faq/1.jpg",
       description:
         "Every block supports dark mode out of the box and can be customized to match your brand. Modify colors, spacing, and typography using Tailwind's configuration. The shadcn/ui theming system makes it easy to maintain consistency across your site.",
     },
@@ -62,7 +62,7 @@ export default async function SheetDemo() {
         buttonTwo={herobanner.buttonTwo}
         coverImage={herobanner.coverImage}
       />
-      <div className="max-w-[280px] sm:max-w-xl mx-auto relative">
+      <div className="hidden max-w-[280px] sm:max-w-xl mx-auto relative">
         <div className="hidden w-[100px] h-[100px] sm:w-[200px] sm:h-[200px] absolute top-0 right-0 z-10">
           <Startpattern />
         </div>

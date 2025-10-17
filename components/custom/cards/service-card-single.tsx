@@ -16,14 +16,14 @@ import { Label } from "@/components/ui/label";
 import { MagicCard } from "@/components/ui/magic-card";
 import Quantityselector from "./quantity-selector";
 import Singleitemselector from "./single-item-selector";
-
+import Image from "next/image";
 export default function MagicCardDemo() {
   const { theme } = useTheme();
   return (
     <Card className="w-full max-w-sm border-none p-0 shadow-none">
       <MagicCard
         gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
-        className="p-0"
+        className="p-0 rounded-xl border border-gray-100"
       >
         <CardHeader className="border-border border-b p-4 [.border-b]:pb-4">
           <CardTitle>Login</CardTitle>
@@ -31,17 +31,15 @@ export default function MagicCardDemo() {
             Enter your credentials to access your account
           </CardDescription>
         </CardHeader>
-        <CardContent className="p-4">
+        <CardContent className="p-0">
           <form>
             <div className="grid gap-4">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="name@example.com" />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" />
-              </div>
+              <Image
+                src="/faq/1.jpg"
+                height="1000"
+                width="1000"
+                alt="Product Image"
+              />
             </div>
           </form>
         </CardContent>
