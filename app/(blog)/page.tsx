@@ -9,6 +9,8 @@ import Servicecardlayout from "@/components/custom/cards/service-card-layout";
 import Faqs from "@/components/custom/faqs/faqs";
 import Startpattern from "@/components/custom/designs/star";
 import Squarerightclip from "@/components/custom/designs/square-right-clip";
+import Singleproduct from "@/components/custom/product-listing/single-product";
+
 export default async function SheetDemo() {
   const herobanner = await client.fetch(heroSectionQuery);
   const banner = await client.fetch(catBannerQuery);
@@ -71,6 +73,13 @@ export default async function SheetDemo() {
         </div>
       </div>
       <Servicecardlayout />
+      <Singleproduct
+        title="Newly added"
+        description="High-quality components designed for modern web apps using Next.js, Tailwind, and Shadcn UI."
+        buttonUrl="#"
+        buttonText="Read More"
+        features={faqs}
+      />
       <Content />
       <Singletestimonial />
       <Ctabanner
