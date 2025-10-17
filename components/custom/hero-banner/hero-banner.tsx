@@ -29,7 +29,7 @@ const Herobanner = (props: {
               {description}
             </p>
           )}
-          <div className="flex gap-4">
+          <div className="flex gap-4 justify-center md:justify-start">
             {buttonOne && (
               <Button variant="default" className="text-md">
                 {buttonOne.label}
