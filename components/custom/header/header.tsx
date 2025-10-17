@@ -37,7 +37,7 @@ const header = (props: {
               className=""
             />
 
-            <div className="my-auto">{title || demo.title}</div>
+            <div className="my-auto">Marketvisit</div>
           </Link>
         </div>
         <div className="my-auto">

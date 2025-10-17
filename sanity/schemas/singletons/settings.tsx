@@ -69,6 +69,23 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "fontStyle",
+      title: "Font Style",
+      type: "string",
+      options: {
+        list: [
+          { title: "Inter", value: "inter" },
+          { title: "Poppins", value: "poppins" },
+          { title: "Roboto", value: "roboto" },
+          { title: "Lato", value: "lato" },
+          { title: "Montserrat", value: "montserrat" },
+        ],
+        layout: "dropdown", // can also be 'radio'
+      },
+      validation: (rule) => rule.required(),
+    }),
+
+    defineField({
       name: "footer",
       description:
         "This is a block of text that will be displayed at the bottom of the page.",

@@ -4,6 +4,8 @@ import { heroSectionQuery } from "@/sanity/lib/queries";
 import { catBannerQuery } from "@/sanity/lib/queries";
 import Ctabanner from "@/components/custom/cta-banner/cta-banner";
 import Herobanner from "@/components/custom/hero-banner/hero-banner";
+import Singletestimonial from "@/components/custom/testimonial/testimonial-single";
+import Velocityscroll from "@/components/custom/hscrolltext/hscrolltext";
 
 export default async function SheetDemo() {
   const herobanner = await client.fetch(heroSectionQuery);
@@ -11,6 +13,7 @@ export default async function SheetDemo() {
   console.log("test22", herobanner.heading);
   return (
     <>
+      <Velocityscroll />
       <Herobanner
         title={herobanner.heading}
         description={herobanner.description}
@@ -18,7 +21,9 @@ export default async function SheetDemo() {
         buttonTwo={herobanner.buttonTwo}
         coverImage={herobanner.coverImage} // ✅ pass only the URL
       />
+
       <Content />
+      <Singletestimonial />
       <Ctabanner
         title={banner.title}
         description={banner.description}

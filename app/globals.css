@@ -2,11 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
- 
-
-
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+  --font-lato: 'Lato', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+}
 
  @layer base {
   :root {
@@ -63,12 +65,6 @@
     --chart-5: 340 75% 55%;
   }
 }
-
-
-
- 
-
-
 
  @layer base {
   * {

@@ -1,4 +1,5 @@
 import { defineQuery } from "next-sanity";
+import { client } from "./client";
 
 export const settingsQuery = defineQuery(`
   *[_type == "settings"][0]{
@@ -75,3 +76,9 @@ export const heroSectionQuery = defineQuery(`
   }
 `);
 
+
+
+export async function getSiteSettings() {
+  const query = `*[_type == "settings"][0]{fontStyle}`;
+  return await client.fetch(query);
+}
