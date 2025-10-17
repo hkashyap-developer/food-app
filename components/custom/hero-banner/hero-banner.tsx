@@ -19,10 +19,10 @@ const Herobanner = (props: {
   const { title, description, buttonOne, buttonTwo, coverImage } = props;
 
   return (
-    <section className="w-full bg-background py-8 md:py-20">
-      <div className="container mx-auto px-4 flex flex-col-reverse md:flex-row items-center gap-12">
+    <section className="w-full bg-background py-0 pb-8 md:py-20">
+      <div className="container mx-auto px-0 sm:px-4 flex flex-col-reverse md:flex-row items-center gap-12">
         {/* Text Section */}
-        <div className="flex-1 text-center md:text-left space-y-6">
+        <div className="flex-1 text-center md:text-left space-y-6 px-4 sm:px-0">
           {title && <h1 className="text-3xl md:text-7xl font-bold">{title}</h1>}
           {description && (
             <p className="text-muted-foreground text-lg md:text-xl max-w-md mx-auto md:mx-0">
