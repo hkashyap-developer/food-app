@@ -14,6 +14,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { MagicCard } from "@/components/ui/magic-card";
+import Quantityselector from "./quantity-selector";
+import Singleitemselector from "./single-item-selector";
 
 export default function MagicCardDemo() {
   const { theme } = useTheme();
@@ -44,7 +46,10 @@ export default function MagicCardDemo() {
           </form>
         </CardContent>
         <CardFooter className="border-border border-t p-4 [.border-t]:pt-4">
-          <Button className="w-full">Sign In</Button>
+          <div className="flex flex-col gap-4">
+            <Quantityselector />
+            <Singleitemselector />
+          </div>
         </CardFooter>
       </MagicCard>
     </Card>

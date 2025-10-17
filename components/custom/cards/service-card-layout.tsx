@@ -10,6 +10,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import Servicecardsingle from "./service-card-single";
 
 interface GalleryItem {
   id: string;
@@ -94,7 +95,7 @@ const Gallery6 = ({
     };
   }, [carouselApi]);
   return (
-    <section className="py-20 sm:py-20">
+    <section className="py-8 sm:py-20">
       <div className="w-full max-w-full">
         <Carousel
           setApi={setCarouselApi}
@@ -113,40 +114,13 @@ const Gallery6 = ({
                 key={item.id}
                 className="ml-8 max-w-[200px] md:max-w-[360px]"
               >
-                <a
-                  href={item.url}
-                  className="group flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="aspect-3/2 flex overflow-clip rounded-xl">
-                      <div className="flex-1">
-                        <div className="relative h-full w-full origin-bottom transition duration-300 group-hover:scale-105">
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            className="h-full w-full object-cover object-center"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mb-2 line-clamp-3 break-words pt-4 text-base font-medium md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
-                    {item.title}
-                  </div>
-                  <div className="text-muted-foreground mb-8 line-clamp-2 text-sm md:mb-12 md:text-base lg:mb-9">
-                    {item.summary}
-                  </div>
-                  <div className="flex items-center text-sm">
-                    Read more{" "}
-                    <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </a>
+                <Servicecardsingle />
               </CarouselItem>
             ))}
           </CarouselContent>
         </Carousel>
       </div>
-      <div className="container">
+      <div className="w-full mt-8">
         <div className="mb-8 flex flex-col justify-between md:mb-14 md:flex-row md:items-end lg:mb-16">
           <div className="flex shrink-0 items-center justify-start gap-2 mx-auto">
             <Button
