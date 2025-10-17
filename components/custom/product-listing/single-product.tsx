@@ -63,17 +63,6 @@ const Feature73 = ({
                 <div className="mb-6">
                   <Quantityselector />
                 </div>
-                {buttonUrl && (
-                  <Button variant="link" asChild className="p-0">
-                    <a
-                      href={buttonUrl}
-                      className="group flex items-center font-medium md:text-base lg:text-md"
-                    >
-                      {buttonText}
-                      <ArrowRight />
-                    </a>
-                  </Button>
-                )}
               </div>
             </div>
           ))}
