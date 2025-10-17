@@ -1,17 +1,61 @@
 import Content from "./content";
 import { client } from "@/sanity/lib/client";
-import { heroSectionQuery } from "@/sanity/lib/queries";
-import { catBannerQuery } from "@/sanity/lib/queries";
+import { heroSectionQuery, catBannerQuery } from "@/sanity/lib/queries";
 import Ctabanner from "@/components/custom/cta-banner/cta-banner";
 import Herobanner from "@/components/custom/hero-banner/hero-banner";
 import Singletestimonial from "@/components/custom/testimonial/testimonial-single";
 import Velocityscroll from "@/components/custom/hscrolltext/hscrolltext";
 import Servicecardlayout from "@/components/custom/cards/service-card-layout";
+import Faqs from "@/components/custom/faqs/faqs";
 
 export default async function SheetDemo() {
   const herobanner = await client.fetch(heroSectionQuery);
   const banner = await client.fetch(catBannerQuery);
-  console.log("test22", herobanner.heading);
+
+  // ✅ Use numeric IDs to match FeatureItem type
+  const faqs = [
+    {
+      id: 1,
+      title: "Ready-to-Use UI Blocks",
+      image:
+        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
+      description:
+        "Browse through our extensive collection of pre-built UI blocks designed with shadcn/ui. Each block is carefully crafted to be responsive, accessible, and easily customizable. Simply copy and paste the code into your project.",
+    },
+    {
+      id: 2,
+      title: "Tailwind CSS & TypeScript",
+      image:
+        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
+      description:
+        "Built with Tailwind CSS for rapid styling and TypeScript for type safety. Our blocks leverage the full power of Tailwind's utility classes while maintaining clean, type-safe code that integrates seamlessly with your Next.js projects.",
+    },
+    {
+      id: 3,
+      title: "Dark Mode & Customization",
+      image:
+        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg",
+      description:
+        "Every block supports dark mode out of the box and can be customized to match your brand. Modify colors, spacing, and typography using Tailwind's configuration. The shadcn/ui theming system makes it easy to maintain consistency across your site.",
+    },
+    {
+      id: 4,
+      title: "Accessibility First",
+      image:
+        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg",
+      description:
+        "All blocks are built with accessibility in mind, following WCAG guidelines. They include proper ARIA labels, keyboard navigation support, and semantic HTML structure. Ensure your website is usable by everyone without extra effort.",
+    },
+    {
+      id: 5,
+      title: "Modern Development Stack",
+      image:
+        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-5.svg",
+      description:
+        "Built for modern web development with React 18, Next.js 14, and the latest shadcn/ui components. Take advantage of React Server Components, TypeScript strict mode, and other cutting-edge features while maintaining excellent performance.",
+    },
+  ];
+
   return (
     <>
       <Velocityscroll />
@@ -20,7 +64,7 @@ export default async function SheetDemo() {
         description={herobanner.description}
         buttonOne={herobanner.buttonOne}
         buttonTwo={herobanner.buttonTwo}
-        coverImage={herobanner.coverImage} // ✅ pass only the URL
+        coverImage={herobanner.coverImage}
       />
       <Servicecardlayout />
       <Content />
@@ -31,6 +75,8 @@ export default async function SheetDemo() {
         buttonOne={banner.button}
         buttonTwo={banner.button}
       />
+      {/* ✅ Pass features correctly */}
+      <Faqs features={faqs} />
     </>
   );
 }
