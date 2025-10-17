@@ -68,7 +68,7 @@ const Feature197 = ({
   const [activeImage, setActiveImage] = useState(features[0].image);
 
   return (
-    <section className="py-32">
+    <section className="py-6">
       <div className="container mx-auto">
         <div className="mb-12 flex w-full items-start justify-between gap-12">
           <div className="w-full md:w-1/2">

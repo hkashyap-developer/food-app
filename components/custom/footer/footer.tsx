@@ -50,7 +50,7 @@ const Footer = async () => {
   return (
     <div>
       {" "}
-      <footer className="bg-black border-accent-2 border-t">
+      <footer className="bg-accent-1 border-accent-2 border-t">
         <div className="container mx-auto px-4">
           {footer.length > 0 ? (
             <PortableText
@@ -58,7 +58,7 @@ const Footer = async () => {
               value={footer as PortableTextBlock[]}
             />
           ) : (
-            <div className="flex justify-start flex-row items-start py-28 lg:flex-col gap-8">
+            <div className="flex justify-start flex-col items-start py-28 lg:flex-col gap-8">
               <h3 className="max-w-min mb-10 text-center text-3xl font-bold leading-tight tracking-tighter lg:mb-0 lg:w-1/2 lg:pr-4 lg:text-left lg:text-5xl">
                 Marketvisit
               </h3>

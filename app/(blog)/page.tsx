@@ -7,7 +7,8 @@ import Singletestimonial from "@/components/custom/testimonial/testimonial-singl
 import Velocityscroll from "@/components/custom/hscrolltext/hscrolltext";
 import Servicecardlayout from "@/components/custom/cards/service-card-layout";
 import Faqs from "@/components/custom/faqs/faqs";
-
+import Startpattern from "@/components/custom/designs/star";
+import Squarerightclip from "@/components/custom/designs/square-right-clip";
 export default async function SheetDemo() {
   const herobanner = await client.fetch(heroSectionQuery);
   const banner = await client.fetch(catBannerQuery);
@@ -66,6 +67,14 @@ export default async function SheetDemo() {
         buttonTwo={herobanner.buttonTwo}
         coverImage={herobanner.coverImage}
       />
+      <div className="max-w-[280px] sm:max-w-xl mx-auto relative">
+        <div className="hidden w-[100px] h-[100px] sm:w-[200px] sm:h-[200px] absolute top-0 right-0 z-10">
+          <Startpattern />
+        </div>
+        <div className="pt-4 sm:pt-6">
+          <Squarerightclip />
+        </div>
+      </div>
       <Servicecardlayout />
       <Content />
       <Singletestimonial />
