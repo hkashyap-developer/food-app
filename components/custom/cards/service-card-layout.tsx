@@ -94,7 +94,7 @@ const Gallery6 = ({
     };
   }, [carouselApi]);
   return (
-    <section className="py-20 sm:py-32">
+    <section className="py-20 sm:py-20">
       <div className="w-full max-w-full">
         <Carousel
           setApi={setCarouselApi}
@@ -111,7 +111,7 @@ const Gallery6 = ({
             {items.map((item) => (
               <CarouselItem
                 key={item.id}
-                className="ml-8 max-w-[200px] md:max-w-[452px]"
+                className="ml-8 max-w-[200px] md:max-w-[360px]"
               >
                 <a
                   href={item.url}
@@ -148,7 +148,7 @@ const Gallery6 = ({
       </div>
       <div className="container">
         <div className="mb-8 flex flex-col justify-between md:mb-14 md:flex-row md:items-end lg:mb-16">
-          <div className="flex shrink-0 items-center justify-start gap-2 px-4">
+          <div className="flex shrink-0 items-center justify-start gap-2 mx-auto">
             <Button
               size="icon"
               variant="outline"
