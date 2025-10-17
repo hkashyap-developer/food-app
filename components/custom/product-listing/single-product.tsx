@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-
+import Quantityselector from "@/components/custom/cards/single-item-selector";
 interface Feature {
   id: string;
   heading: string;
@@ -36,31 +36,9 @@ const Feature73 = ({
   ],
 }: Feature73Props) => {
   return (
-    <section className="py-12 sm:py-32 px-4 sm:pt-0">
-      <div className="container">
-        <div className="mb-8 lg:max-w-sm">
-          <h2 className="mb-3 text-3xl font-semibold md:mb-4 md:text-4xl lg:mb-6">
-            {title}
-          </h2>
-          {description && (
-            <p className="text-muted-foreground mb-8 lg:text-lg">
-              {description}
-            </p>
-          )}
-          <div className="mb-6">test</div>
-          {buttonUrl && (
-            <Button variant="outline" asChild>
-              <a
-                href={buttonUrl}
-                className="group flex items-center font-medium md:text-base lg:text-md"
-              >
-                {buttonText}
-                <ArrowRight />
-              </a>
-            </Button>
-          )}
-        </div>
-        <div className="grid gap-6 md:grid-cols-3 lg:gap-8">
+    <section className="py-12 sm:py-32 px-4 sm:pt-0 border-1 border-red-800">
+      <div className="container w-full mx-auto flex flex-row align-middle justify-between">
+        <div className="w-full grid gap-6 md:grid-cols-1 lg:gap-8">
           {features.map((feature) => (
             <div
               key={feature.id}
@@ -73,13 +51,29 @@ const Feature73 = ({
                   className="aspect-16/9 h-full w-full object-cover object-center transition-opacity hover:opacity-80"
                 />
               </a>
-              <div className="px-6 py-8 md:px-8 md:py-10 lg:px-10 lg:py-12">
-                <h3 className="mb-3 text-lg font-semibold md:mb-4 md:text-2xl lg:mb-6">
-                  {feature.heading}
-                </h3>
-                <p className="text-muted-foreground lg:text-lg">
-                  {feature.description}
-                </p>
+              <div className="mb-8 lg:max-w-sm">
+                <h2 className="mb-3 text-3xl font-semibold md:mb-4 md:text-4xl lg:mb-6">
+                  {title}
+                </h2>
+                {description && (
+                  <p className="text-muted-foreground mb-8 lg:text-lg">
+                    {description}
+                  </p>
+                )}
+                <div className="mb-6">
+                  <Quantityselector />
+                </div>
+                {buttonUrl && (
+                  <Button variant="link" asChild className="p-0">
+                    <a
+                      href={buttonUrl}
+                      className="group flex items-center font-medium md:text-base lg:text-md"
+                    >
+                      {buttonText}
+                      <ArrowRight />
+                    </a>
+                  </Button>
+                )}
               </div>
             </div>
           ))}

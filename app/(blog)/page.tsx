@@ -78,7 +78,6 @@ export default async function SheetDemo() {
         description="High-quality components designed for modern web apps using Next.js, Tailwind, and Shadcn UI."
         buttonUrl="#"
         buttonText="Read More"
-        features={faqs}
       />
       <Content />
       <Singletestimonial />
