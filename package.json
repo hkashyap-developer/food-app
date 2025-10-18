@@ -20,6 +20,7 @@
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@sanity/assist": "^3.0.8",
+    "@sanity/color-input": "^4.0.6",
     "@sanity/icons": "^3.7.4",
     "@sanity/image-url": "^1.0.2",
     "@sanity/preview-url-secret": "^2.0.0",
