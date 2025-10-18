@@ -2,6 +2,8 @@ import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import Quantityselector from "@/components/custom/cards/single-item-selector";
+import Image from "next/image";
+
 interface Feature {
   id: string;
   heading: string;
@@ -29,7 +31,7 @@ const Feature73 = ({
       heading: "Modern Design",
       description:
         "Clean and intuitive interface built with the latest design principles. Optimized for the best user experience.",
-      image: "/test4.jpg",
+      image: "/test6.jpg",
       url: "https://shadcnblocks.com",
     },
   ],
@@ -37,30 +39,32 @@ const Feature73 = ({
   return (
     <section className="py-0 sm:py-12 px-4 sm:pt-0 border-1 border-red-800">
       <div className="container w-full mx-auto flex flex-row align-middle justify-between">
-        <div className="w-full grid gap-6 md:grid-cols-1 lg:gap-8 relative">
+        <div className="w-full flex lg:gap-8 relative">
           {features.map((feature) => (
-            <div
-              key={feature.id}
-              className="border-border flex flex-col overflow-clip rounded-xl border"
-            >
-              <a href={feature.url}>
-                <img
+            <div key={feature.id} className=" flex flex-col rounded-xl border">
+              <a href={feature.url} className="">
+                <Image
                   src={feature.image}
                   alt={feature.heading}
-                  className="aspect-16/9 h-full w-full object-cover object-center"
+                  className="w-full"
+                  width="100"
+                  height="100"
                 />
               </a>
-              <div className="lg:max-w-sm md:absolute bottom-4 left-4 p-4">
-                <p className="mb-3 text-base font-semibold md:mb-4 md:text-4xl lg:mb-6">
-                  {title}
-                </p>
-                {description && (
-                  <p className="text-muted-foreground mb-4 text-sm lg:text-lg">
-                    {description}
+              <div className="max-w-full lg:max-w-sm md:absolute bottom-4 left-4 p-4">
+                <div className="max-w-full md:max-w-[600px] flex flex-col supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 justify-start gap-2 rounded-2xl  p-2 backdrop-blur-md">
+                  <p className=" mb-3 text-black font-semibold md:mb-4 md:text-4xl lg:mb-6">
+                    {title}
                   </p>
-                )}
-                <div className="mb-0 sm:mb-6">
-                  <Quantityselector />
+                  {description && (
+                    <p className="text-black mb-4 text-sm lg:text-lg">
+                      {description}
+                    </p>
+                  )}
+
+                  <div className="mb-0 sm:mb-0">
+                    <Quantityselector />
+                  </div>
                 </div>
               </div>
             </div>

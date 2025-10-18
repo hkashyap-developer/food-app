@@ -50,11 +50,11 @@ const Footer = async () => {
   return (
     <div>
       {" "}
-      <footer className="bg-accent-1 border-accent-2 border-t">
+      <footer className="bg-black border-accent-2 border-t">
         <div className="container mx-auto px-4">
           {footer.length > 0 ? (
             <PortableText
-              className="prose-sm text-pretty bottom-0 w-full max-w-none bg-white py-12 text-center md:py-20"
+              className="prose-sm text-pretty bottom-0 w-full max-w-none text-white py-12 text-center md:py-20"
               value={footer as PortableTextBlock[]}
             />
           ) : (
@@ -65,13 +65,13 @@ const Footer = async () => {
               <div className="flex  flex-col items-start justify-start lg:flex-row gap-2">
                 <a
                   href="#"
-                  className="text-[12px] md:text-[16px] hover:underline"
+                  className="text-white text-[12px] md:text-[16px] hover:underline"
                 >
                   T&C • Privacy Policy • Refund Policy
                 </a>
                 <a
                   href="https://mediaxinfinity.com"
-                  className="text-[12px] md:text-[16px] hover:underline"
+                  className="text-white text-[12px] md:text-[16px] hover:underline"
                 >
                   Powered by Media X Infinity
                 </a>
