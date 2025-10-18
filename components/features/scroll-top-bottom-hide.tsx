@@ -6,7 +6,7 @@ export default function HideOnScroll({
 }: {
   children: React.ReactNode;
 }) {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
