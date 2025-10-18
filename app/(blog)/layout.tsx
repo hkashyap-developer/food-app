@@ -6,6 +6,7 @@ import { draftMode } from "next/headers";
 import AlertBanner from "./alert-banner";
 import Header from "@/components/custom/header/header";
 import Footer from "@/components/custom/footer/footer";
+import Dock from "@/components/custom/dock/dock";
 
 import { getSiteSettings } from "@/sanity/lib/queries"; // you'll create this
 
@@ -73,6 +74,9 @@ export default async function RootLayout({
         </section>
         {isDraftMode && <VisualEditing />}
         <SpeedInsights />
+        <div className="fixed bottom-4 mx-auto w-full">
+          <Dock />
+        </div>
         <Footer />
       </body>
     </html>
