@@ -68,7 +68,7 @@ export const heroSectionQuery = defineQuery(`
   *[_type == "herosection"][0]{
     heading,
     description,
-    "backgroundImage": coverImage.asset->url, 
+    "backgroundImage": backgroundImage.asset->url, 
     "coverImage": coverImage.asset->url, 
     buttonOne{
       label,
