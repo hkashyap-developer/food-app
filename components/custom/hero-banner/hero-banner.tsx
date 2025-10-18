@@ -33,47 +33,49 @@ const Herobanner = (props: {
         backgroundImage: `url(${backgroundImage})`,
       }}
     >
-      <div className="py-0 pb-10 sm:py-16 md:py-20 border-b-1">
-        <div className="container mx-auto px-0 sm:px-4 flex justify-between flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
-          {/* Text Section */}
-          <div className="flex-1 text-center md:text-left space-y-6 px-4 pt-8 sm:px-0 max-w-[420px] sm:max-w-[720px]">
-            {title && (
-              <h1 className="text-3xl md:text-4xl xl:text-6xl 2xl:text-7xl font-bold">
-                {title}
-              </h1>
-            )}
-            {description && (
-              <p className="text-muted-foreground text-lg md:text-xl max-w-xl mx-auto md:mx-0">
-                {description}
-              </p>
-            )}
-            <div className="flex gap-4 justify-center md:justify-start">
-              {buttonOne && (
-                <Button variant="default" className="">
-                  {buttonOne.label}
-                </Button>
+      <div className="supports-backdrop-blur:bg-white/90 supports-backdrop-blur:dark:bg-black/10 backdrop-blur-xl bg-[rgba(255,255,255,0.9)]">
+        <div className="py-0 pb-10 sm:py-16 md:py-20 border-b-1">
+          <div className="container mx-auto px-0 sm:px-4 flex justify-between flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
+            {/* Text Section */}
+            <div className="flex-1 text-center md:text-left space-y-6 px-4 pt-8 sm:px-0 max-w-[420px] sm:max-w-[720px]">
+              {title && (
+                <h1 className="text-3xl md:text-4xl xl:text-6xl 2xl:text-7xl font-bold">
+                  {title}
+                </h1>
               )}
-              {buttonTwo && (
-                <Button variant="outline" className="">
-                  {buttonTwo.label}
-                </Button>
+              {description && (
+                <p className="text-muted-foreground text-lg md:text-xl max-w-xl mx-auto md:mx-0">
+                  {description}
+                </p>
               )}
+              <div className="flex gap-4 justify-center md:justify-start">
+                {buttonOne && (
+                  <Button variant="default" className="">
+                    {buttonOne.label}
+                  </Button>
+                )}
+                {buttonTwo && (
+                  <Button variant="outline" className="">
+                    {buttonTwo.label}
+                  </Button>
+                )}
+              </div>
             </div>
-          </div>
 
-          {/* Image Section */}
-          {coverImage && (
-            <div className="max-w-[620px] flex-1 flex justify-center md:justify-end">
-              <Image
-                src={coverImage}
-                alt="test"
-                width={800}
-                height={800}
-                className="sm:rounded-xl object-cover w-full h-full"
-                priority
-              />
-            </div>
-          )}
+            {/* Image Section */}
+            {coverImage && (
+              <div className="max-w-[620px] flex-1 flex justify-center md:justify-end">
+                <Image
+                  src={coverImage}
+                  alt="test"
+                  width={800}
+                  height={800}
+                  className="sm:rounded-xl object-cover w-full h-full"
+                  priority
+                />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>
