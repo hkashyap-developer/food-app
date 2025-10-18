@@ -29,7 +29,7 @@ const Feature73 = ({
       heading: "Modern Design",
       description:
         "Clean and intuitive interface built with the latest design principles. Optimized for the best user experience.",
-      image: "/169.jpg",
+      image: "/test4.jpg",
       url: "https://shadcnblocks.com",
     },
   ],
