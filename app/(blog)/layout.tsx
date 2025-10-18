@@ -7,7 +7,7 @@ import AlertBanner from "./alert-banner";
 import Header from "@/components/custom/header/header";
 import Footer from "@/components/custom/footer/footer";
 import Dock from "@/components/custom/dock/dock";
-
+import HideOnScroll from "@/components/features/scroll-top-bottom-hide";
 import { getSiteSettings } from "@/sanity/lib/queries"; // you'll create this
 
 import { Inter, Poppins, Roboto, Lato, Montserrat } from "next/font/google";
@@ -74,9 +74,11 @@ export default async function RootLayout({
         </section>
         {isDraftMode && <VisualEditing />}
         <SpeedInsights />
-        <div className="fixed bottom-4 mx-auto w-full">
-          <Dock />
-        </div>
+        <HideOnScroll>
+          <div className="fixed bottom-4 mx-auto w-full">
+            <Dock />
+          </div>
+        </HideOnScroll>
         <Footer />
       </body>
     </html>
