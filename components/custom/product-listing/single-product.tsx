@@ -37,22 +37,25 @@ const Feature73 = ({
   ],
 }: Feature73Props) => {
   return (
-    <section className="py-0 sm:py-12 px-4 sm:pt-0 border-1 border-red-800">
+    <section className="py-0 px-4 sm:pt-0 border-1 border-red-800">
       <div className="container w-full mx-auto flex flex-row align-middle justify-between">
         <div className="w-full flex lg:gap-8 relative">
           {features.map((feature) => (
-            <div key={feature.id} className=" flex flex-col rounded-xl border">
+            <div
+              key={feature.id}
+              className="w-full flex flex-col rounded-xl border"
+            >
               <a href={feature.url} className="">
                 <Image
                   src={feature.image}
                   alt={feature.heading}
-                  className="w-full"
-                  width="100"
-                  height="100"
+                  className="w-full rounded-xl"
+                  width="1920"
+                  height="1080"
                 />
               </a>
               <div className="max-w-full lg:max-w-sm md:absolute bottom-4 left-4 p-4">
-                <div className="max-w-full md:max-w-[600px] flex flex-col supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 justify-start gap-2 rounded-2xl  p-2 backdrop-blur-md">
+                <div className="min-w-full md:min-w-[600px] flex flex-col supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 justify-start gap-2 rounded-2xl p-0 sm:p-2 backdrop-blur-md">
                   <p className=" mb-3 text-black font-semibold md:mb-4 md:text-4xl lg:mb-6">
                     {title}
                   </p>

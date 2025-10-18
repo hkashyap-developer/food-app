@@ -56,7 +56,7 @@ const Herobanner = (props: {
               alt="test"
               width={800}
               height={800}
-              className="rounded-xl object-cover w-full h-full"
+              className="sm:rounded-xl object-cover w-full h-full"
               priority
             />
           </div>
