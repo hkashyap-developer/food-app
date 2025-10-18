@@ -28,13 +28,5 @@ export default function HideOnScroll({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
-    <div
-      className={`transition-opacity duration-500 ${
-        visible ? "opacity-100" : "opacity-0 pointer-events-none"
-      }`}
-    >
-      {children}
-    </div>
-  );
+  return <div className={` ${visible ? "flex" : "hidden"}`}>{children}</div>;
 }
