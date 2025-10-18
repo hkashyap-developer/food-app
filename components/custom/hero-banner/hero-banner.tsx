@@ -14,6 +14,7 @@ const Herobanner = (props: {
   description?: any;
   buttonOne?: ButtonType;
   buttonTwo?: ButtonType;
+  backgroundImage?: string;
   coverImage?: string;
 }) => {
   const { title, description, buttonOne, buttonTwo, coverImage } = props;
@@ -55,7 +56,7 @@ const Herobanner = (props: {
               alt="test"
               width={800}
               height={800}
-              className="object-cover w-full h-full"
+              className="rounded-xl object-cover w-full h-full"
               priority
             />
           </div>

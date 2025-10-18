@@ -106,7 +106,7 @@ const Feature197 = ({
               ))}
             </Accordion>
           </div>
-          <div className="bg-muted relative m-auto hidden w-1/2 overflow-hidden rounded-xl md:block max-w-[500px]">
+          <div className="bg-muted relative hidden w-1/2 overflow-hidden rounded-xl md:block max-w-[500px]">
             <img
               src={activeImage}
               alt="Feature preview"

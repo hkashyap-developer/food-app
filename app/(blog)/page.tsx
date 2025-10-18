@@ -10,7 +10,7 @@ import Faqs from "@/components/custom/faqs/faqs";
 import Startpattern from "@/components/custom/designs/star";
 import Squarerightclip from "@/components/custom/designs/square-right-clip";
 import Singleproduct from "@/components/custom/product-listing/single-product";
-
+import Blufade from "@/components/custom/blur-fade/blur-fade";
 export default async function SheetDemo() {
   const herobanner = await client.fetch(heroSectionQuery);
   const banner = await client.fetch(catBannerQuery);
@@ -62,6 +62,7 @@ export default async function SheetDemo() {
         description={herobanner.description}
         buttonOne={herobanner.buttonOne}
         buttonTwo={herobanner.buttonTwo}
+        backgroundImage={herobanner.backgroundImage}
         coverImage={herobanner.coverImage}
       />
       <div className="hidden max-w-[280px] sm:max-w-xl mx-auto relative">
@@ -91,6 +92,7 @@ export default async function SheetDemo() {
       />
       {/* ✅ Pass features correctly */}
       <Faqs features={faqs} />
+      <Blufade />
     </>
   );
 }
