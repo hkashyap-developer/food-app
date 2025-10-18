@@ -73,12 +73,14 @@ export default async function SheetDemo() {
         </div>
       </div>
       <Servicecardlayout />
-      <Singleproduct
-        title="Newly added"
-        description="High-quality components designed for modern web apps using Next.js, Tailwind, and Shadcn UI."
-        buttonUrl="#"
-        buttonText="Read More"
-      />
+      <div className="mb-8">
+        <Singleproduct
+          title="Newly added"
+          description="High-quality components designed for modern web apps using Next.js, Tailwind, and Shadcn UI."
+          buttonUrl="#"
+          buttonText="Read More"
+        />
+      </div>
       <Content />
       <Singletestimonial />
       <Ctabanner

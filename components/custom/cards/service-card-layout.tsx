@@ -121,7 +121,7 @@ const Gallery6 = ({
         </Carousel>
       </div>
       <div className="w-full mt-8">
-        <div className="mb-0 flex flex-col justify-between md:mb-14 md:flex-row md:items-end lg:mb-16">
+        <div className="mb-0 flex flex-col justify-between md:flex-row md:items-end">
           <div className="flex shrink-0 items-center justify-start gap-2 mx-auto">
             <Button
               size="icon"

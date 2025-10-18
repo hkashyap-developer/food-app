@@ -29,16 +29,15 @@ const Feature73 = ({
       heading: "Modern Design",
       description:
         "Clean and intuitive interface built with the latest design principles. Optimized for the best user experience.",
-      image:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
+      image: "/169.jpg",
       url: "https://shadcnblocks.com",
     },
   ],
 }: Feature73Props) => {
   return (
-    <section className="py-12 sm:py-32 px-4 sm:pt-0 border-1 border-red-800">
+    <section className="py-0 sm:py-12 px-4 sm:pt-0 border-1 border-red-800">
       <div className="container w-full mx-auto flex flex-row align-middle justify-between">
-        <div className="w-full grid gap-6 md:grid-cols-1 lg:gap-8">
+        <div className="w-full grid gap-6 md:grid-cols-1 lg:gap-8 relative">
           {features.map((feature) => (
             <div
               key={feature.id}
@@ -48,19 +47,19 @@ const Feature73 = ({
                 <img
                   src={feature.image}
                   alt={feature.heading}
-                  className="aspect-16/9 h-full w-full object-cover object-center transition-opacity hover:opacity-80"
+                  className="aspect-16/9 h-full w-full object-cover object-center"
                 />
               </a>
-              <div className="mb-8 lg:max-w-sm">
-                <h2 className="mb-3 text-3xl font-semibold md:mb-4 md:text-4xl lg:mb-6">
+              <div className="lg:max-w-sm md:absolute bottom-4 left-4 p-4">
+                <p className="mb-3 text-base font-semibold md:mb-4 md:text-4xl lg:mb-6">
                   {title}
-                </h2>
+                </p>
                 {description && (
-                  <p className="text-muted-foreground mb-8 lg:text-lg">
+                  <p className="text-muted-foreground mb-4 text-sm lg:text-lg">
                     {description}
                   </p>
                 )}
-                <div className="mb-6">
+                <div className="mb-0 sm:mb-6">
                   <Quantityselector />
                 </div>
               </div>
