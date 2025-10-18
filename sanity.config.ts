@@ -20,7 +20,7 @@ import author from "@/sanity/schemas/documents/author";
 import post from "@/sanity/schemas/documents/post";
 import home from "@/sanity/schemas/documents/home";
 import settings from "@/sanity/schemas/singletons/settings";
-
+import { colorInput } from "@sanity/color-input";
 import { resolveHref } from "@/sanity/lib/utils";
 
 const homeLocation = {
@@ -74,7 +74,7 @@ export default defineConfig({
           }),
         },
       },
-      previewUrl: { previewMode: { enable: "/api/draft-mode/enable" } },
+      previewUrl: { origin: "http://localhost:3000", previewMode: { enable: "/api/draft-mode/enable" } },
     }),
     structureTool({ structure: pageStructure([settings]) }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
@@ -84,6 +84,7 @@ export default defineConfig({
     // Sets up AI Assist with preset prompts
     // https://www.sanity.io/docs/ai-assist
     assistWithPresets(),
+    colorInput(),
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     process.env.NODE_ENV === "development" &&

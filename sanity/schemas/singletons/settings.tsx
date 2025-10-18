@@ -69,6 +69,12 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "themeColor",
+      title: "Theme Color",
+      type: "color",
+      options: { disableAlpha: false },
+    }),
+    defineField({
       name: "fontStyle",
       title: "Font Style",
       type: "string",

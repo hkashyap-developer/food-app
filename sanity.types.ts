@@ -13,14 +13,27 @@
  */
 
 // Source: schema.json
-export type Herosection = {
+export type Pages = {
   _id: string;
-  _type: "herosection";
+  _type: "pages";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   heading?: string;
   description?: string;
+  backgroundImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
   coverImage?: {
     asset?: {
       _ref: string;
@@ -159,6 +172,7 @@ export type Settings = {
     _type: "block";
     _key: string;
   }>;
+  themeColor?: Color;
   fontStyle?: "inter" | "poppins" | "roboto" | "lato" | "montserrat";
   footer?: Array<{
     children?: Array<{
@@ -192,6 +206,39 @@ export type Settings = {
     metadataBase?: string;
     _type: "image";
   };
+};
+
+export type Color = {
+  _type: "color";
+  hex?: string;
+  alpha?: number;
+  hsl?: HslaColor;
+  hsv?: HsvaColor;
+  rgb?: RgbaColor;
+};
+
+export type RgbaColor = {
+  _type: "rgbaColor";
+  r?: number;
+  g?: number;
+  b?: number;
+  a?: number;
+};
+
+export type HsvaColor = {
+  _type: "hsvaColor";
+  h?: number;
+  s?: number;
+  v?: number;
+  a?: number;
+};
+
+export type HslaColor = {
+  _type: "hslaColor";
+  h?: number;
+  s?: number;
+  l?: number;
+  a?: number;
 };
 
 export type SanityAssistInstructionTask = {
@@ -433,7 +480,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Herosection | Post | Author | Settings | SanityAssistInstructionTask | SanityAssistTaskStatus | SanityAssistSchemaTypeAnnotations | SanityAssistOutputType | SanityAssistOutputField | SanityAssistInstructionContext | AssistInstructionContext | SanityAssistInstructionUserInput | SanityAssistInstructionPrompt | SanityAssistInstructionFieldRef | SanityAssistInstruction | SanityAssistSchemaTypeField | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Pages | Post | Author | Settings | Color | RgbaColor | HsvaColor | HslaColor | SanityAssistInstructionTask | SanityAssistTaskStatus | SanityAssistSchemaTypeAnnotations | SanityAssistOutputType | SanityAssistOutputField | SanityAssistInstructionContext | AssistInstructionContext | SanityAssistInstructionUserInput | SanityAssistInstructionPrompt | SanityAssistInstructionFieldRef | SanityAssistInstruction | SanityAssistSchemaTypeField | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./app/(blog)/product/[slug]/page.tsx
 // Variable: postSlugs
@@ -444,7 +491,7 @@ export type PostSlugsResult = Array<{
 
 // Source: ./sanity/lib/queries.ts
 // Variable: settingsQuery
-// Query: *[_type == "settings"][0]{    title,    description,    footer,    "favicon": favicon.asset->url,    "ogImage": ogImage.asset->url  }
+// Query: *[_type == "settings"][0]{    title,    description,    footer,    themeColor,     "favicon": favicon.asset->url,    "ogImage": ogImage.asset->url  }
 export type SettingsQueryResult = {
   title: string | null;
   description: Array<{
@@ -483,6 +530,7 @@ export type SettingsQueryResult = {
     _type: "block";
     _key: string;
   }> | null;
+  themeColor: Color | null;
   favicon: string | null;
   ogImage: string | null;
 } | null;
@@ -643,31 +691,19 @@ export type PostQueryResult = {
 // Query: *[_type == "cat-banner"][0]{    title,    description,    picture{      asset->{        url,        metadata { dimensions }      },      alt    },    button{      label,      url,      style,      newTab    }  }
 export type CatBannerQueryResult = null;
 // Variable: heroSectionQuery
-// Query: *[_type == "herosection"][0]{    heading,    description,    "coverImage": coverImage.asset->url,     buttonOne{      label,      link    },     buttonTwo{      label,      link    },   }
-export type HeroSectionQueryResult = {
-  heading: string | null;
-  description: string | null;
-  coverImage: string | null;
-  buttonOne: {
-    label: string | null;
-    link: string | null;
-  } | null;
-  buttonTwo: {
-    label: string | null;
-    link: string | null;
-  } | null;
-} | null;
+// Query: *[_type == "herosection"][0]{    heading,    description,    "backgroundImage": backgroundImage.asset->url,     "coverImage": coverImage.asset->url,     buttonOne{      label,      link    },     buttonTwo{      label,      link    },   }
+export type HeroSectionQueryResult = null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"post\" && defined(slug.current)]{\"slug\": slug.current}": PostSlugsResult;
-    "\n  *[_type == \"settings\"][0]{\n    title,\n    description,\n    footer,\n    \"favicon\": favicon.asset->url,\n    \"ogImage\": ogImage.asset->url\n  }\n": SettingsQueryResult;
+    "\n  *[_type == \"settings\"][0]{\n    title,\n    description,\n    footer,\n    themeColor, \n    \"favicon\": favicon.asset->url,\n    \"ogImage\": ogImage.asset->url\n  }\n": SettingsQueryResult;
     "\n  *[_type == \"post\" && defined(slug.current)] | order(date desc, _updatedAt desc) [0] {\n    content,\n    \n  _id,\n  \"status\": select(_originalId in path(\"drafts.**\") => \"draft\", \"published\"),\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage,\n  \"date\": coalesce(date, _updatedAt),\n  \"author\": author->{\"name\": coalesce(name, \"Anonymous\"), picture},\n\n  }\n": HeroQueryResult;
     "\n  *[_type == \"post\"  && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {\n    \n  _id,\n  \"status\": select(_originalId in path(\"drafts.**\") => \"draft\", \"published\"),\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage,\n  \"date\": coalesce(date, _updatedAt),\n  \"author\": author->{\"name\": coalesce(name, \"Anonymous\"), picture},\n\n  }\n": MoreStoriesQueryResult;
     "\n  *[_type == \"post\" && slug.current == $slug] [0] {\n    content,\n    \n  _id,\n  \"status\": select(_originalId in path(\"drafts.**\") => \"draft\", \"published\"),\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage,\n  \"date\": coalesce(date, _updatedAt),\n  \"author\": author->{\"name\": coalesce(name, \"Anonymous\"), picture},\n\n  }\n": PostQueryResult;
     "\n  *[_type == \"cat-banner\"][0]{\n    title,\n    description,\n    picture{\n      asset->{\n        url,\n        metadata { dimensions }\n      },\n      alt\n    },\n    button{\n      label,\n      url,\n      style,\n      newTab\n    }\n  }\n": CatBannerQueryResult;
-    "\n  *[_type == \"herosection\"][0]{\n    heading,\n    description,\n    \"coverImage\": coverImage.asset->url, \n    buttonOne{\n      label,\n      link\n    }, \n    buttonTwo{\n      label,\n      link\n    }, \n  }\n": HeroSectionQueryResult;
+    "\n  *[_type == \"herosection\"][0]{\n    heading,\n    description,\n    \"backgroundImage\": backgroundImage.asset->url, \n    \"coverImage\": coverImage.asset->url, \n    buttonOne{\n      label,\n      link\n    }, \n    buttonTwo{\n      label,\n      link\n    }, \n  }\n": HeroSectionQueryResult;
   }
 }

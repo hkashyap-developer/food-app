@@ -1,6 +1,10 @@
 import Content from "./content";
 import { client } from "@/sanity/lib/client";
-import { heroSectionQuery, catBannerQuery } from "@/sanity/lib/queries";
+import {
+  settingsQuery,
+  heroSectionQuery,
+  catBannerQuery,
+} from "@/sanity/lib/queries";
 import Ctabanner from "@/components/custom/cta-banner/cta-banner";
 import Herobanner from "@/components/custom/hero-banner/hero-banner";
 import Singletestimonial from "@/components/custom/testimonial/testimonial-single";
@@ -12,8 +16,10 @@ import Squarerightclip from "@/components/custom/designs/square-right-clip";
 import Singleproduct from "@/components/custom/product-listing/single-product";
 import Blufade from "@/components/custom/blur-fade/blur-fade";
 export default async function SheetDemo() {
+  const settings = await client.fetch(settingsQuery);
   const herobanner = await client.fetch(heroSectionQuery);
   const banner = await client.fetch(catBannerQuery);
+  console.log(settings);
 
   // ✅ Use numeric IDs to match FeatureItem type
   const faqs = [
@@ -56,6 +62,10 @@ export default async function SheetDemo() {
 
   return (
     <>
+      <div
+        style={{ backgroundColor: settings.themeColor.hex }}
+        className="min-h-[4px]"
+      ></div>
       <Velocityscroll />
       <Herobanner
         title={herobanner.heading}

@@ -2,8 +2,8 @@ import { DocumentIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "herosection",
-  title: "Herosection",
+  name: "pages",
+  title: "Pages",
   icon: DocumentIcon,
   type: "document",
   fields: [

@@ -6,6 +6,7 @@ export const settingsQuery = defineQuery(`
     title,
     description,
     footer,
+    themeColor, 
     "favicon": favicon.asset->url,
     "ogImage": ogImage.asset->url
   }
