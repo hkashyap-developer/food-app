@@ -169,6 +169,50 @@
           }
         },
         "optional": true
+      },
+      "headings": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "object",
+            "attributes": {
+              "title": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                },
+                "optional": true
+              },
+              "subheading": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                },
+                "optional": true
+              },
+              "_type": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string",
+                  "value": "headingItem"
+                }
+              }
+            },
+            "rest": {
+              "type": "object",
+              "attributes": {
+                "_key": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "optional": true
       }
     }
   },
@@ -900,6 +944,35 @@
               }
             }
           }
+        },
+        "optional": true
+      },
+      "fontStyle": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "inter"
+            },
+            {
+              "type": "string",
+              "value": "poppins"
+            },
+            {
+              "type": "string",
+              "value": "roboto"
+            },
+            {
+              "type": "string",
+              "value": "lato"
+            },
+            {
+              "type": "string",
+              "value": "montserrat"
+            }
+          ]
         },
         "optional": true
       },
