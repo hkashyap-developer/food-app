@@ -9,7 +9,7 @@ import Footer from "@/components/custom/footer/footer";
 import Dock from "@/components/custom/dock/dock";
 import HideOnScroll from "@/components/features/scroll-top-bottom-hide";
 import { getSiteSettings } from "@/sanity/lib/queries"; // you'll create this
-
+import { StickyBanner } from "@/components/ui/sticky-banner";
 import { Inter, Poppins, Roboto, Lato, Montserrat } from "next/font/google";
 
 export const inter = Inter({
@@ -58,14 +58,11 @@ export default async function RootLayout({
 }) {
   const { isEnabled: isDraftMode } = await draftMode();
   const settings = await getSiteSettings();
-  const selectedFont = settings?.fontStyle || "inter";
-  const activeFont = fontMap[selectedFont] || fontMap.inter;
+  const font = settings?.fontStyle || "inter"; // from Sanity
+  const fontMap = { inter, poppins, roboto, lato, montserrat };
   return (
-    <html
-      lang="en"
-      className={`${fontMap[selectedFont] || fontMap.inter} bg-white text-black`}
-    >
-      <body className="">
+    <html lang="en" className={` bg-red-800 text-black`}>
+      <body className="{fontMap[font]?.variable}">
         <Header />
 
         <section className="">
