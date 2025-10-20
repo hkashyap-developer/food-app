@@ -1,19 +1,21 @@
 import React from "react";
 import ServiceCardSliding from "./service-card-sliding";
-import { client } from "@/sanity/lib/client"; // STEP 1
-import { hsScrollText as hsScrollTextQuery } from "@/sanity/lib/queries"; // STEP 1
+import { client } from "@/sanity/lib/client";
+import { allPosts } from "@/sanity/lib/queries";
 
-// ✅ Type definition for fetched data // STEP 2
-interface HsScrollTextType {
+interface PostQueryType {
   themeColor?: { hex?: string };
   marqueebannertext?: string;
 }
 
+// Server Component
 export default async function ServiceCardlayout() {
-  // ✅ Use different variable name to prevent self-reference error STEP 3
-  const hsScrollData = (await client.fetch(
-    hsScrollTextQuery
-  )) as HsScrollTextType | null;
+  const hsScrollData = (await client.fetch(allPosts)) as PostQueryType | null;
 
-  return <div></div>;
+  return (
+    <div>
+      {/* Pass data as props to the client component */}
+      <ServiceCardSliding hsScrollData={hsScrollData} />
+    </div>
+  );
 }

@@ -62,6 +62,13 @@ export const postQuery = defineQuery(`
   }
 `);
 
+// Fixed allPosts query
+export const allPosts = defineQuery(`
+  *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) [0...100] {
+    ${postFields}
+  }
+`);
+
 
 // 🆕 Add this CTA Banner query
 export const catBannerQuery = defineQuery(`
