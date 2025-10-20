@@ -8,6 +8,13 @@ export default defineType({
   title: "Settings",
   type: "document",
   icon: CogIcon,
+  fieldsets: [
+    {
+      name: "businessDetails",
+      title: "Business Details",
+      options: { collapsible: true, collapsed: false },
+    },
+  ],
   fields: [
     defineField({
       name: "favicon",
@@ -31,6 +38,14 @@ export default defineType({
       name: "title",
       description: "This field is the title of your blog.",
       title: "Title",
+      type: "string",
+      initialValue: demo.title,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "marqueebannertext",
+      description: "Marquee banner text",
+      title: "Marquee Banner Text",
       type: "string",
       initialValue: demo.title,
       validation: (rule) => rule.required(),
@@ -86,11 +101,10 @@ export default defineType({
           { title: "Lato", value: "lato" },
           { title: "Montserrat", value: "montserrat" },
         ],
-        layout: "dropdown", // can also be 'radio'
+        layout: "dropdown",
       },
       validation: (rule) => rule.required(),
     }),
-
     defineField({
       name: "footer",
       description:
@@ -158,6 +172,51 @@ export default defineType({
           ),
         }),
       ],
+    }),
+
+    // ✅ New Business Details Group
+    defineField({
+      name: "brandName",
+      title: "Brand Name",
+      type: "string",
+      fieldset: "businessDetails",
+    }),
+    defineField({
+      name: "gstNo",
+      title: "GST No / Reg No",
+      type: "string",
+      fieldset: "businessDetails",
+    }),
+    defineField({
+      name: "phoneNumber",
+      title: "Phone Number",
+      type: "string",
+      fieldset: "businessDetails",
+    }),
+    defineField({
+      name: "email",
+      title: "Email ID",
+      type: "string",
+      fieldset: "businessDetails",
+    }),
+    defineField({
+      name: "city",
+      title: "City",
+      type: "string",
+      fieldset: "businessDetails",
+    }),
+    defineField({
+      name: "country",
+      title: "Country",
+      type: "string",
+      fieldset: "businessDetails",
+    }),
+    defineField({
+      name: "about",
+      title: "About",
+      type: "array",
+      of: [defineArrayMember({ type: "block" })],
+      fieldset: "businessDetails",
     }),
   ],
   preview: {

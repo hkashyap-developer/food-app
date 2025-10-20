@@ -8,7 +8,7 @@ import { hsScrollText as hsScrollTextQuery } from "@/sanity/lib/queries"; // ✅
 // ✅ Type definition for fetched data
 interface HsScrollTextType {
   themeColor?: { hex?: string };
-  text?: string;
+  marqueebannertext?: string;
 }
 
 export default async function ScrollBasedVelocityDemo() {
@@ -24,7 +24,7 @@ export default async function ScrollBasedVelocityDemo() {
     >
       <ScrollVelocityContainer className="text-base tracking-[-0.02em] md:text-xl md:leading-[5rem] text-white py-6 md:py-0">
         <ScrollVelocityRow baseVelocity={20} direction={1}>
-          {hsScrollData?.text ?? "Build free websites • "}
+          {hsScrollData?.marqueebannertext ?? "Build a free websites • "}
         </ScrollVelocityRow>
       </ScrollVelocityContainer>
     </div>

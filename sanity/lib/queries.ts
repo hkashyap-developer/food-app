@@ -15,10 +15,20 @@ export const settingsQuery = defineQuery(`
 
 export const hsScrollText = defineQuery(`
   *[_type == "settings"][0]{
-    themeColor
+    themeColor, 
+    marqueebannertext
   }
 `);
 
+export const productServiceSliderBasic = defineQuery(`
+  *[_type == "post"][0]{
+    title, 
+    slug,
+    content, 
+    excerpt, 
+    coverImage
+  }
+`);
 
 
 const postFields = /* groq */ `
