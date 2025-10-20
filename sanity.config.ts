@@ -20,6 +20,8 @@ import author from "@/sanity/schemas/documents/author";
 import post from "@/sanity/schemas/documents/post";
 import home from "@/sanity/schemas/documents/home";
 import settings from "@/sanity/schemas/singletons/settings";
+import global from "@/sanity/schemas/singletons/global";
+import herobanner from "@/sanity/schemas/singletons/herobanner";
 import { colorInput } from "@sanity/color-input";
 import { resolveHref } from "@/sanity/lib/utils";
 
@@ -37,6 +39,8 @@ export default defineConfig({
     types: [
       // Singletons
       settings,
+      global,
+      herobanner,
       // Documents
       post,
       author,
