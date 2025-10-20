@@ -50,7 +50,7 @@ const Footer = async () => {
   return (
     <div>
       {" "}
-      <footer className="bg-black border-accent-2 border-t">
+      <footer className="bg-black">
         <div className="container mx-auto px-4">
           {footer.length > 0 ? (
             <PortableText
