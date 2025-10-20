@@ -35,7 +35,7 @@ export default function HeroBanner({
         backgroundImage: bgImage ? `url(${bgImage})` : "none",
       }}
     >
-      <div className="supports-backdrop-blur:bg-white/90 supports-backdrop-blur:dark:bg-black/10 backdrop-blur-xl bg-[rgba(255,255,255,0.9)]">
+      <div className="supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 backdrop-blur-sm bg-[rgba(255,255,255,0.8)]">
         <div className="py-0 pb-10 sm:py-16 md:py-20 border-b border-gray-200">
           <div className="container mx-auto px-0 sm:px-4 flex justify-between flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
             {/* Text Section */}
