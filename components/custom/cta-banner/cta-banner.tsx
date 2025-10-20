@@ -22,7 +22,7 @@ const Ctabanner = (props: {
   const buttonTwo = props.buttonOne;
 
   return (
-    <div className="bg-gray-100 flex flex-col justify-center min-h-[600px] container mx-auto px-8 text-left sm:mb-20">
+    <div className="bg-gray-100 flex flex-col justify-center min-h-[600px] container mx-auto px-8 text-left sm:mb-20 rounded-xl">
       {/* Title */}
       {title && (
         <h2 className="text-pretty mt-5 mb-4 text-lg lg:text-4xl font-semibold">

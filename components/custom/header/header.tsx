@@ -5,7 +5,7 @@ import { client } from "@/sanity/lib/client";
 import MobileMenu from "@/components/custom/header/mobile-menu";
 import * as demo from "@/sanity/lib/demo";
 import { settingsQuery } from "@/sanity/lib/queries";
-
+import MainIcons from "./main-icons";
 // ✅ Type for the settings query result
 type SettingsQueryResult = {
   title?: string | null;
@@ -43,7 +43,8 @@ export default async function Header() {
             <div className="my-auto font-medium text-base">{title}</div>
           </Link>
         </div>
-        <div className="my-auto">
+        <div className="my-auto flex flex-row justify-center align-middle gap-4">
+          <MainIcons />
           <MobileMenu />
         </div>
       </div>
