@@ -15,66 +15,114 @@ import Startpattern from "@/components/custom/designs/star";
 import Squarerightclip from "@/components/custom/designs/square-right-clip";
 import Singleproduct from "@/components/custom/product-listing/single-product";
 import Blufade from "@/components/custom/blur-fade/blur-fade";
-export default async function SheetDemo() {
-  const settings = await client.fetch(settingsQuery);
-  const herobanner = await client.fetch(heroSectionQuery);
-  const banner = await client.fetch(catBannerQuery);
-  console.log(settings);
+import fetchNotionBlocks from "@/components/features/notion-data";
+import NotionRenderer from "@/components/features/notion-render";
 
-  // ✅ Use numeric IDs to match FeatureItem type
+// ✅ Type definitions
+interface ButtonType {
+  label: string;
+  url?: string;
+}
+
+interface HeroBannerType {
+  heading?: string;
+  description?: string;
+  buttonOne?: ButtonType | string;
+  buttonTwo?: ButtonType | string;
+  backgroundImage?: string;
+  coverImage?: string;
+}
+
+interface BannerType {
+  title?: string;
+  description?: string;
+  button?: string | ButtonType;
+}
+
+interface SettingsType {
+  themeColor?: { hex?: string };
+}
+
+export default async function SheetDemo() {
+  const settings = (await client.fetch(settingsQuery)) as SettingsType | null;
+  const herobanner = (await client.fetch(
+    heroSectionQuery
+  )) as HeroBannerType | null;
+  const banner = (await client.fetch(catBannerQuery)) as BannerType | null;
+
   const faqs = [
     {
       id: 1,
       title: "Ready-to-Use UI Blocks",
       image: "/faq/3.jpg",
       description:
-        "Browse through our extensive collection of pre-built UI blocks designed with shadcn/ui. Each block is carefully crafted to be responsive, accessible, and easily customizable. Simply copy and paste the code into your project.",
+        "Browse through our collection of pre-built UI blocks designed with shadcn/ui. Each block is responsive, accessible, and customizable.",
     },
     {
       id: 2,
       title: "Tailwind CSS & TypeScript",
       image: "/faq/2.jpg",
       description:
-        "Built with Tailwind CSS for rapid styling and TypeScript for type safety. Our blocks leverage the full power of Tailwind's utility classes while maintaining clean, type-safe code that integrates seamlessly with your Next.js projects.",
+        "Built with Tailwind CSS and TypeScript. Clean, type-safe code that integrates seamlessly with Next.js projects.",
     },
     {
       id: 3,
       title: "Dark Mode & Customization",
       image: "/faq/1.jpg",
       description:
-        "Every block supports dark mode out of the box and can be customized to match your brand. Modify colors, spacing, and typography using Tailwind's configuration. The shadcn/ui theming system makes it easy to maintain consistency across your site.",
+        "All blocks support dark mode and can be customized to match your brand with Tailwind's configuration.",
     },
     {
       id: 4,
       title: "Accessibility First",
       image: "/faq/4.jpg",
       description:
-        "All blocks are built with accessibility in mind, following WCAG guidelines. They include proper ARIA labels, keyboard navigation support, and semantic HTML structure. Ensure your website is usable by everyone without extra effort.",
+        "Built following WCAG guidelines with proper ARIA labels, keyboard navigation, and semantic HTML.",
     },
     {
       id: 5,
       title: "Modern Development Stack",
       image: "/faq/5.jpg",
       description:
-        "Built for modern web development with React 18, Next.js 14, and the latest shadcn/ui components. Take advantage of React Server Components, TypeScript strict mode, and other cutting-edge features while maintaining excellent performance.",
+        "Powered by React 18, Next.js 14, and shadcn/ui. Uses RSCs, TypeScript strict mode, and high performance.",
     },
   ];
+
+  const notionBlockId = "292f5474f0c180229dcfcf962b3e6d15";
+  const notionBlocks = await fetchNotionBlocks(notionBlockId);
+
+  // ✅ Safe normalization for buttons (string or object)
+  const normalizeButton = (btn?: string | ButtonType): ButtonType =>
+    typeof btn === "string"
+      ? { label: btn, url: "#" }
+      : btn || { label: "", url: "#" };
 
   return (
     <>
       <div
-        style={{ backgroundColor: settings.themeColor.hex }}
+        style={{ backgroundColor: settings?.themeColor?.hex ?? "#000000" }}
         className="min-h-[4px]"
       ></div>
+
       <Velocityscroll />
-      <Herobanner
-        title={herobanner.heading}
-        description={herobanner.description}
-        buttonOne={herobanner.buttonOne}
-        buttonTwo={herobanner.buttonTwo}
-        backgroundImage={herobanner.backgroundImage}
-        coverImage={herobanner.coverImage}
-      />
+
+      {herobanner ? (
+        <Herobanner
+          title={herobanner.heading ?? ""}
+          description={herobanner.description ?? ""}
+          buttonOne={normalizeButton(herobanner.buttonOne)}
+          buttonTwo={normalizeButton(herobanner.buttonTwo)}
+          backgroundImage={herobanner.backgroundImage ?? ""}
+          coverImage={herobanner.coverImage ?? ""}
+        />
+      ) : (
+        <div className="text-center py-10 text-gray-500">
+          No hero banner data found.
+        </div>
+      )}
+
+      {/* <NotionRenderer blocks={notionBlocks} /> */}
+
       <div className="hidden max-w-[280px] sm:max-w-xl mx-auto relative">
         <div className="hidden w-[100px] h-[100px] sm:w-[200px] sm:h-[200px] absolute top-0 right-0 z-10">
           <Startpattern />
@@ -83,7 +131,9 @@ export default async function SheetDemo() {
           <Squarerightclip />
         </div>
       </div>
+
       <Servicecardlayout />
+
       <div className="mb-8">
         <Singleproduct
           title="Newly added"
@@ -92,15 +142,19 @@ export default async function SheetDemo() {
           buttonText="Read More"
         />
       </div>
+
       <Content />
       <Singletestimonial />
-      <Ctabanner
-        title={banner.title}
-        description={banner.description}
-        buttonOne={banner.button}
-        buttonTwo={banner.button}
-      />
-      {/* ✅ Pass features correctly */}
+
+      {banner && (
+        <Ctabanner
+          title={banner.title ?? ""}
+          description={banner.description ?? ""}
+          buttonOne={normalizeButton(banner.button)}
+          buttonTwo={normalizeButton(banner.button)}
+        />
+      )}
+
       <Faqs features={faqs} />
       <Blufade />
     </>

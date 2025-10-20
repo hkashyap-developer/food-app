@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image"; // ✅ correct import
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 type ButtonType = {
@@ -9,32 +9,34 @@ type ButtonType = {
   link?: string;
 };
 
-const Herobanner = (props: {
+interface HeroBannerProps {
   title?: string | null;
-  description?: any;
+  description?: string | null;
   buttonOne?: ButtonType;
   buttonTwo?: ButtonType;
-  backgroundImage?: string;
-  coverImage?: string;
-}) => {
-  const {
-    title,
-    description,
-    buttonOne,
-    buttonTwo,
-    backgroundImage,
-    coverImage,
-  } = props;
+  backgroundImage?: string | null;
+  coverImage?: string | null;
+}
+
+export default function HeroBanner({
+  title,
+  description,
+  buttonOne,
+  buttonTwo,
+  backgroundImage,
+  coverImage,
+}: HeroBannerProps) {
+  const bgImage = backgroundImage || ""; // ✅ ensures no undefined background
 
   return (
     <section
-      className="w-full bg-gray-50  bg-cover bg-center"
+      className="w-full bg-gray-50 bg-cover bg-center"
       style={{
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundImage: bgImage ? `url(${bgImage})` : "none",
       }}
     >
       <div className="supports-backdrop-blur:bg-white/90 supports-backdrop-blur:dark:bg-black/10 backdrop-blur-xl bg-[rgba(255,255,255,0.9)]">
-        <div className="py-0 pb-10 sm:py-16 md:py-20 border-b-1">
+        <div className="py-0 pb-10 sm:py-16 md:py-20 border-b border-gray-200">
           <div className="container mx-auto px-0 sm:px-4 flex justify-between flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
             {/* Text Section */}
             <div className="flex-1 text-center md:text-left space-y-6 px-4 pt-8 sm:px-0 max-w-[420px] sm:max-w-[720px]">
@@ -48,18 +50,20 @@ const Herobanner = (props: {
                   {description}
                 </p>
               )}
-              <div className="flex gap-4 justify-center md:justify-start">
-                {buttonOne && (
-                  <Button variant="default" className="">
-                    {buttonOne.label}
-                  </Button>
-                )}
-                {buttonTwo && (
-                  <Button variant="outline" className="">
-                    {buttonTwo.label}
-                  </Button>
-                )}
-              </div>
+              {(buttonOne || buttonTwo) && (
+                <div className="flex gap-4 justify-center md:justify-start">
+                  {buttonOne?.label && (
+                    <Button asChild variant="default">
+                      <a href={buttonOne.link || "#"}>{buttonOne.label}</a>
+                    </Button>
+                  )}
+                  {buttonTwo?.label && (
+                    <Button asChild variant="outline">
+                      <a href={buttonTwo.link || "#"}>{buttonTwo.label}</a>
+                    </Button>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Image Section */}
@@ -67,7 +71,7 @@ const Herobanner = (props: {
               <div className="max-w-[620px] flex-1 flex justify-center md:justify-end">
                 <Image
                   src={coverImage}
-                  alt="test"
+                  alt={title || "Hero banner image"}
                   width={800}
                   height={800}
                   className="sm:rounded-xl object-cover w-full h-full"
@@ -80,6 +84,4 @@ const Herobanner = (props: {
       </div>
     </section>
   );
-};
-
-export default Herobanner;
+}

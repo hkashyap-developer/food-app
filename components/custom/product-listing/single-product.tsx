@@ -56,17 +56,19 @@ const Feature73 = ({
               </a>
               <div className="max-w-full lg:max-w-sm md:absolute bottom-4 left-4 p-4">
                 <div className="min-w-full md:min-w-[600px] flex flex-col supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 justify-start gap-2 rounded-2xl p-0 sm:p-2 backdrop-blur-md">
-                  <p className=" mb-3 text-black font-semibold md:mb-4 md:text-4xl lg:mb-6">
-                    {title}
-                  </p>
-                  {description && (
-                    <p className="text-black mb-4 text-sm lg:text-lg">
-                      {description}
+                  <div className="">
+                    <p className=" mb-3 text-black font-semibold md:mb-4 md:text-4xl lg:mb-6">
+                      {title}
                     </p>
-                  )}
+                    {description && (
+                      <p className="text-black mb-4 text-sm lg:text-lg">
+                        {description}
+                      </p>
+                    )}
 
-                  <div className="mb-0 sm:mb-0">
-                    <Quantityselector />
+                    <div className="mb-0 sm:mb-0">
+                      <Quantityselector />
+                    </div>
                   </div>
                 </div>
               </div>

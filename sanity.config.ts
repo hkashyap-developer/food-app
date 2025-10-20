@@ -23,6 +23,7 @@ import settings from "@/sanity/schemas/singletons/settings";
 import { colorInput } from "@sanity/color-input";
 import { resolveHref } from "@/sanity/lib/utils";
 
+
 const homeLocation = {
   title: "Home",
   href: "/",
