@@ -14,7 +14,7 @@ export default function AlertBanner() {
   const shouldShow = useSyncExternalStore(
     emptySubscribe,
     () => window.top === window,
-    () => false,
+    () => false
   );
 
   if (!shouldShow) return null;
@@ -25,7 +25,7 @@ export default function AlertBanner() {
         pending ? "animate-pulse" : ""
       } fixed top-0 left-0 z-50 w-full border-b bg-white/95 text-black backdrop-blur`}
     >
-      <div className="py-2 text-center text-sm">
+      <div className="testxx hidden py-2 text-center text-sm">
         {pending ? (
           "Disabling draft mode..."
         ) : (
@@ -37,7 +37,7 @@ export default function AlertBanner() {
                 startTransition(() =>
                   disableDraftMode().then(() => {
                     router.refresh();
-                  }),
+                  })
                 )
               }
               className="hover:text-cyan underline transition-colors duration-200"
