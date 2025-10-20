@@ -100,6 +100,8 @@ export default defineType({
           { title: "Roboto", value: "roboto" },
           { title: "Lato", value: "lato" },
           { title: "Montserrat", value: "montserrat" },
+          { title: "Nunito", value: "nunito" },
+          { title: "Noto Serif", value: "notoserif" },
         ],
         layout: "dropdown",
       },

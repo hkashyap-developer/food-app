@@ -154,6 +154,7 @@ export type Settings = {
     _type: "image";
   };
   title?: string;
+  marqueebannertext?: string;
   description?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -173,7 +174,7 @@ export type Settings = {
     _key: string;
   }>;
   themeColor?: Color;
-  fontStyle?: "inter" | "poppins" | "roboto" | "lato" | "montserrat";
+  fontStyle?: "inter" | "poppins" | "roboto" | "lato" | "montserrat" | "nunito" | "notoserif";
   footer?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -206,6 +207,30 @@ export type Settings = {
     metadataBase?: string;
     _type: "image";
   };
+  brandName?: string;
+  gstNo?: string;
+  phoneNumber?: string;
+  email?: string;
+  city?: string;
+  country?: string;
+  about?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
 };
 
 export type Color = {
@@ -535,9 +560,48 @@ export type SettingsQueryResult = {
   ogImage: string | null;
 } | null;
 // Variable: hsScrollText
-// Query: *[_type == "settings"][0]{    themeColor  }
+// Query: *[_type == "settings"][0]{    themeColor,     marqueebannertext  }
 export type HsScrollTextResult = {
   themeColor: Color | null;
+  marqueebannertext: string | null;
+} | null;
+// Variable: productServiceSliderBasic
+// Query: *[_type == "post"][0]{    title,     slug,    content,     excerpt,     coverImage  }
+export type ProductServiceSliderBasicResult = {
+  title: string | null;
+  slug: Slug | null;
+  content: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+  excerpt: string | null;
+  coverImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
 } | null;
 // Variable: heroQuery
 // Query: *[_type == "post" && defined(slug.current)] | order(date desc, _updatedAt desc) [0] {    content,      _id,  "status": select(_originalId in path("drafts.**") => "draft", "published"),  "title": coalesce(title, "Untitled"),  "slug": slug.current,  excerpt,  coverImage,  "date": coalesce(date, _updatedAt),  "author": author->{"name": coalesce(name, "Anonymous"), picture},  }
@@ -705,7 +769,8 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"post\" && defined(slug.current)]{\"slug\": slug.current}": PostSlugsResult;
     "\n  *[_type == \"settings\"][0]{\n    title,\n    description,\n    footer,\n    themeColor, \n    \"favicon\": favicon.asset->url,\n    \"ogImage\": ogImage.asset->url\n  }\n": SettingsQueryResult;
-    "\n  *[_type == \"settings\"][0]{\n    themeColor\n  }\n": HsScrollTextResult;
+    "\n  *[_type == \"settings\"][0]{\n    themeColor, \n    marqueebannertext\n  }\n": HsScrollTextResult;
+    "\n  *[_type == \"post\"][0]{\n    title, \n    slug,\n    content, \n    excerpt, \n    coverImage\n  }\n": ProductServiceSliderBasicResult;
     "\n  *[_type == \"post\" && defined(slug.current)] | order(date desc, _updatedAt desc) [0] {\n    content,\n    \n  _id,\n  \"status\": select(_originalId in path(\"drafts.**\") => \"draft\", \"published\"),\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage,\n  \"date\": coalesce(date, _updatedAt),\n  \"author\": author->{\"name\": coalesce(name, \"Anonymous\"), picture},\n\n  }\n": HeroQueryResult;
     "\n  *[_type == \"post\"  && defined(slug.current)] | order(date desc, _updatedAt desc) [0...$limit] {\n    \n  _id,\n  \"status\": select(_originalId in path(\"drafts.**\") => \"draft\", \"published\"),\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage,\n  \"date\": coalesce(date, _updatedAt),\n  \"author\": author->{\"name\": coalesce(name, \"Anonymous\"), picture},\n\n  }\n": MoreStoriesQueryResult;
     "\n  *[_type == \"post\" && slug.current == $slug] [0] {\n    content,\n    \n  _id,\n  \"status\": select(_originalId in path(\"drafts.**\") => \"draft\", \"published\"),\n  \"title\": coalesce(title, \"Untitled\"),\n  \"slug\": slug.current,\n  excerpt,\n  coverImage,\n  \"date\": coalesce(date, _updatedAt),\n  \"author\": author->{\"name\": coalesce(name, \"Anonymous\"), picture},\n\n  }\n": PostQueryResult;

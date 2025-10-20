@@ -19,6 +19,10 @@ const fontLinks: Record<string, string> = {
   lato: "https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap",
   montserrat:
     "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap",
+  nunito:
+    "https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap",
+  notoserif:
+    "https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap",
 };
 
 // Map Sanity font names to CSS font-family
@@ -28,6 +32,8 @@ const fontFamilyMap: Record<string, string> = {
   roboto: "'Roboto', sans-serif",
   lato: "'Lato', sans-serif",
   montserrat: "'Montserrat', sans-serif",
+  nunito: "'Nunito', sans-serif",
+  notoserif: "'Noto Serif', serif",
 };
 
 export default async function RootLayout({
@@ -47,8 +53,6 @@ export default async function RootLayout({
       <body
         style={{
           fontFamily: fontFamilyMap[font],
-          backgroundColor: "#f8f8f8",
-          color: "#000",
         }}
       >
         <Header />
