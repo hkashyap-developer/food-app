@@ -20,13 +20,14 @@ export default function SheetDemo() {
       </SheetTrigger>
       <SheetContent side="right">
         <SheetHeader className="text-left">
-          <SheetTitle>Edit profile</SheetTitle>
+          <SheetTitle>Marketvisit</SheetTitle>
           <SheetDescription>
-            Make changes to your profile here. Click save when you re done.
+            Marketvisit builds websites for Indian hyperlocal businesses
+            efficiently and quickly.
           </SheetDescription>
         </SheetHeader>
         <div className="min-h-[200px]"></div>
-        <SheetFooter className="flex gap-4">
+        <SheetFooter className="flex flex-col gap-4">
           <Button type="submit">Save changes</Button>
           <SheetClose asChild>
             <Button variant="outline">Close</Button>
