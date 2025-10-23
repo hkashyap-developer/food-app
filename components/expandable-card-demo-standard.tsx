@@ -133,6 +133,7 @@ export default function ExpandableCardDemo() {
             onClick={() => setActive(card)}
             className="p-4 flex flex-col md:flex-row justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer"
           >
+            test
             <div className="flex gap-4 flex-row md:flex-row ">
               <motion.div layoutId={`image-${card.title}-${id}`}>
                 <img

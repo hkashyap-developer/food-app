@@ -103,9 +103,8 @@ export default async function SheetDemo() {
         style={{ backgroundColor: settings?.themeColor?.hex ?? "#000000" }}
         className="min-h-[4px]"
       ></div>
-
+      testxx
       <Velocityscroll />
-
       {herobanner ? (
         <Herobanner
           title={herobanner.heading ?? ""}
@@ -120,9 +119,7 @@ export default async function SheetDemo() {
           No hero banner data found.
         </div>
       )}
-
       {/* <NotionRenderer blocks={notionBlocks} /> */}
-
       <div className="hidden max-w-[280px] sm:max-w-xl mx-auto relative">
         <div className="hidden w-[100px] h-[100px] sm:w-[200px] sm:h-[200px] absolute top-0 right-0 z-10">
           <Startpattern />
@@ -131,9 +128,7 @@ export default async function SheetDemo() {
           <Squarerightclip />
         </div>
       </div>
-
       <Servicecardlayout />
-
       <div className="mb-8">
         <Singleproduct
           title="Newly added"
@@ -142,10 +137,8 @@ export default async function SheetDemo() {
           buttonText="Read More"
         />
       </div>
-
       <Content />
       <Singletestimonial />
-
       {banner && (
         <Ctabanner
           title={banner.title ?? ""}
@@ -154,7 +147,6 @@ export default async function SheetDemo() {
           buttonTwo={normalizeButton(banner.button)}
         />
       )}
-
       <Faqs features={faqs} />
       <Blufade />
       <Velocityscroll />
