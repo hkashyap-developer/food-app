@@ -1,3 +1,11 @@
+## Deploy your own
+
+Use the Deploy Button below, you'll deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) as well as connect it to your Sanity dataset using [the Sanity Vercel Integration][integration].
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/hkashyap-developer/food-app)
+
+
+
 # A statically generated blog example using Next.js and Sanity
 
 ![Screenshot of Sanity Studio using Presentation Tool to do Visual Editing](https://github.com/sanity-io/next.js/assets/81981/59ecd9d6-7a78-41c6-95f7-275f66fe3c9d)
@@ -23,11 +31,8 @@ The Studio connects to Sanity Content Lake, which gives you hosted content APIs 
 
 ### [https://next-blog.sanity.build](https://next-blog.sanity.build)
 
-## Deploy your own
 
-Use the Deploy Button below, you'll deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) as well as connect it to your Sanity dataset using [the Sanity Vercel Integration][integration].
 
-[![Deploy with Vercel](https://vercel.com/button)][vercel-deploy]
 
 ## How to use
 
