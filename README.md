@@ -27,7 +27,8 @@ The Studio connects to Sanity Content Lake, which gives you hosted content APIs 
 
 Use the Deploy Button below, you'll deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) as well as connect it to your Sanity dataset using [the Sanity Vercel Integration][integration].
 
-[![Deploy with Vercel](https://vercel.com/button)][vercel-deploy]
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/hkashyap-developer/food-app)
+
 
 ## How to use
 
