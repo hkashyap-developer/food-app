@@ -15,7 +15,7 @@ export default async function ServiceCardlayout() {
   return (
     <div>
       {/* Pass data as props to the client component */}
-      <ServiceCardSliding hsScrollData={hsScrollData} />
+      <ServiceCardSliding />
     </div>
   );
 }
