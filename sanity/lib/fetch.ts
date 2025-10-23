@@ -41,7 +41,7 @@ export async function sanityFetch<const QueryString extends string>({
       // The token is required to fetch draft content
       token,
       // The `previewDrafts` perspective isn't available on the API CDN
-      useCdn: false,
+      useCdn: true,
       // And we can't cache the responses as it would slow down the live preview experience
       next: { revalidate: 0 },
     });
