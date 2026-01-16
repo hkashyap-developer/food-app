@@ -15,8 +15,6 @@ import Startpattern from "@/components/custom/designs/star";
 import Squarerightclip from "@/components/custom/designs/square-right-clip";
 import Singleproduct from "@/components/custom/product-listing/single-product";
 import Blufade from "@/components/custom/blur-fade/blur-fade";
-import fetchNotionBlocks from "@/components/features/notion-data";
-import NotionRenderer from "@/components/features/notion-render";
 
 // ✅ Type definitions
 interface ButtonType {
@@ -88,9 +86,6 @@ export default async function SheetDemo() {
     },
   ];
 
-  const notionBlockId = "292f5474f0c180229dcfcf962b3e6d15";
-  const notionBlocks = await fetchNotionBlocks(notionBlockId);
-
   // ✅ Safe normalization for buttons (string or object)
   const normalizeButton = (btn?: string | ButtonType): ButtonType =>
     typeof btn === "string"
@@ -119,7 +114,6 @@ export default async function SheetDemo() {
           No hero banner data found.
         </div>
       )}
-      {/* <NotionRenderer blocks={notionBlocks} /> */}
       <div className="hidden max-w-[280px] sm:max-w-xl mx-auto relative">
         <div className="hidden w-[100px] h-[100px] sm:w-[200px] sm:h-[200px] absolute top-0 right-0 z-10">
           <Startpattern />
