@@ -103,7 +103,7 @@ export default async function SheetDemo() {
         style={{ backgroundColor: settings?.themeColor?.hex ?? "#000000" }}
         className="min-h-[4px]"
       ></div>
-      testxx
+
       <Velocityscroll />
       {herobanner ? (
         <Herobanner

@@ -40,7 +40,7 @@ export default async function Header() {
               height={32}
               className="object-contain"
             />
-            <div className="my-auto font-medium text-base">{title}</div>
+            <div className="my-auto font-medium text-xl">{title}</div>
           </Link>
         </div>
         <div className="my-auto flex flex-row justify-center align-middle gap-4">
