@@ -1,4 +1,7 @@
-import { defineType, defineField } from "sanity";
+import { CogIcon } from "@sanity/icons";
+import { defineArrayMember, defineField, defineType } from "sanity";
+
+import * as demo from "@/sanity/lib/demo";
 
 export default defineType({
   name: "heroBanner",
@@ -22,6 +25,20 @@ export default defineType({
       type: "text",
       group: "groupOne",
     }),
+    defineField({
+      name: "coverImage",
+      title: "Cover Image",
+      type: "image",
+      group: "groupOne",
+      fields: [
+        {
+          name: "alt",
+          title: "Alt text",
+          type: "string",
+        },
+      ],
+    }),
+
     defineField({
       name: "innerGroup",
       title: "Inner Group",

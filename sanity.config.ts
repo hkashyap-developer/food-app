@@ -24,10 +24,10 @@ import global from "@/sanity/schemas/singletons/global";
 import herobanner from "@/sanity/schemas/singletons/herobanner";
 import { colorInput } from "@sanity/color-input";
 import { resolveHref } from "@/sanity/lib/utils";
-
+import Image from "next/image";
 
 const homeLocation = {
-  title: "Home",
+  title: "Food App",
   href: "/",
 } satisfies DocumentLocation;
 
@@ -47,6 +47,7 @@ export default defineConfig({
       home,
     ],
   },
+
   plugins: [
     presentationTool({
       resolve: {
@@ -78,7 +79,15 @@ export default defineConfig({
             }),
           }),
         },
+        
       },
+
+
+
+
+
+
+
       previewUrl: { origin: "http://localhost:3000", previewMode: { enable: "/api/draft-mode/enable" } },
     }),
     structureTool({ structure: pageStructure([settings]) }),

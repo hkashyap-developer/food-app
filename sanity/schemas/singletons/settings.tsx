@@ -28,9 +28,6 @@ export default defineType({
           name: "alt",
           title: "Alt text",
           type: "string",
-          options: {
-            isHighlighted: true,
-          },
         },
       ],
     }),
