@@ -4,7 +4,6 @@ import {
   settingsQuery,
   heroSectionQuery,
   catBannerQuery,
-  homeGalleryQuery,
 } from "@/sanity/lib/queries";
 import Ctabanner from "@/components/custom/cta-banner/cta-banner";
 import Herobanner from "@/components/custom/hero-banner/hero-banner";
@@ -15,7 +14,7 @@ import Faqs from "@/components/custom/faqs/faqs";
 import Startpattern from "@/components/custom/designs/star";
 import Squarerightclip from "@/components/custom/designs/square-right-clip";
 import Singleproduct from "@/components/custom/product-listing/single-product";
-import Blufade from "@/components/custom/blur-fade/blur-fade";
+import Blurfade from "@/components/custom/blur-fade/blur-fade";
 
 // ✅ Type definitions
 interface ButtonType {
@@ -42,23 +41,12 @@ interface SettingsType {
   themeColor?: { hex?: string };
 }
 
-type GalleryImageType = {
-  _id: string;
-  galleryImage: {
-    url: string;
-    alt: string;
-  };
-}[];
-
 export default async function SheetDemo() {
   const settings = (await client.fetch(settingsQuery)) as SettingsType | null;
   const herobanner = (await client.fetch(
     heroSectionQuery
   )) as HeroBannerType | null;
   const banner = (await client.fetch(catBannerQuery)) as BannerType | null;
-  const gallery = (await client.fetch(
-    homeGalleryQuery
-  )) as GalleryImageType | null;
 
   const faqs = [
     {
@@ -126,6 +114,7 @@ export default async function SheetDemo() {
           No hero banner data found.
         </div>
       )}
+      {/* <NotionRenderer blocks={notionBlocks} /> */}
       <div className="hidden max-w-[280px] sm:max-w-xl mx-auto relative">
         <div className="hidden w-[100px] h-[100px] sm:w-[200px] sm:h-[200px] absolute top-0 right-0 z-10">
           <Startpattern />
@@ -154,16 +143,7 @@ export default async function SheetDemo() {
         />
       )}
       <Faqs features={faqs} />
-      <Blufade gallery={gallery ?? []} />
-
-      {gallery?.map((item) => (
-        <img
-          key={item._id}
-          src={item.galleryImage.url}
-          alt={item.galleryImage.alt}
-        />
-      ))}
-
+      <Blurfade />
       <Velocityscroll />
     </>
   );

@@ -110,16 +110,14 @@ export const heroSectionQuery = defineQuery(`
 
 
 export const homeGalleryQuery = defineQuery(`
-  *[_type == "gallery"]{
+  *[_type == "gallery"] | order(_createdAt asc){
     _id,
     galleryImage{
-      alt,
-      "url": asset->url,
       asset->{
-        metadata {
-          dimensions
-        }
-      }
+        _id,
+        url
+      },
+      alt
     }
   }
 `);
