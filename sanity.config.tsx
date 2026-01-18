@@ -1,9 +1,8 @@
 "use client";
-/**
- * This config is used to set up Sanity Studio that's mounted on the `app/(sanity)/studio/[[...tool]]/page.tsx` route
- */
+
+import { defineConfig, PluginOptions } from "sanity";
 import { visionTool } from "@sanity/vision";
-import { PluginOptions, defineConfig } from "sanity";
+import { structureTool } from "sanity/structure";
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import {
   presentationTool,
@@ -11,20 +10,21 @@ import {
   defineLocations,
   type DocumentLocation,
 } from "sanity/presentation";
-import { structureTool } from "sanity/structure";
+import { colorInput } from "@sanity/color-input";
 
 import { apiVersion, dataset, projectId, studioUrl } from "@/sanity/lib/api";
 import { pageStructure, singletonPlugin } from "@/sanity/plugins/settings";
 import { assistWithPresets } from "@/sanity/plugins/assist";
+import { resolveHref } from "@/sanity/lib/utils";
+
+// Schemas
 import author from "@/sanity/schemas/documents/author";
 import post from "@/sanity/schemas/documents/post";
 import home from "@/sanity/schemas/documents/home";
 import settings from "@/sanity/schemas/singletons/settings";
 import global from "@/sanity/schemas/singletons/global";
 import herobanner from "@/sanity/schemas/singletons/herobanner";
-import { colorInput } from "@sanity/color-input";
-import { resolveHref } from "@/sanity/lib/utils";
-import Image from "next/image";
+import gallery from "@/sanity/schemas/documents/gallery";
 
 const homeLocation = {
   title: "Food App",
@@ -35,17 +35,9 @@ export default defineConfig({
   basePath: studioUrl,
   projectId,
   dataset,
+
   schema: {
-    types: [
-      // Singletons
-      settings,
-      global,
-      herobanner,
-      // Documents
-      post,
-      author,
-      home,
-    ],
+    types: [settings, global, herobanner, post, author, home, gallery],
   },
 
   plugins: [
@@ -79,28 +71,19 @@ export default defineConfig({
             }),
           }),
         },
-        
       },
-
-
-
-
-
-
-
-      previewUrl: { origin: "http://localhost:3000", previewMode: { enable: "/api/draft-mode/enable" } },
+      previewUrl: {
+        origin: "http://localhost:3000",
+        previewMode: { enable: "/api/draft-mode/enable" },
+      },
     }),
+
     structureTool({ structure: pageStructure([settings]) }),
-    // Configures the global "new document" button, and document actions, to suit the Settings document singleton
     singletonPlugin([settings.name]),
-    // Add an image asset source for Unsplash
     unsplashImageAsset(),
-    // Sets up AI Assist with preset prompts
-    // https://www.sanity.io/docs/ai-assist
     assistWithPresets(),
     colorInput(),
-    // Vision lets you query your content with GROQ in the studio
-    // https://www.sanity.io/docs/the-vision-plugin
+
     process.env.NODE_ENV === "development" &&
       visionTool({ defaultApiVersion: apiVersion }),
   ].filter(Boolean) as PluginOptions[],

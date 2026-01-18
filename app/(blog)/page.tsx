@@ -4,6 +4,7 @@ import {
   settingsQuery,
   heroSectionQuery,
   catBannerQuery,
+  homeGalleryQuery,
 } from "@/sanity/lib/queries";
 import Ctabanner from "@/components/custom/cta-banner/cta-banner";
 import Herobanner from "@/components/custom/hero-banner/hero-banner";
@@ -41,12 +42,23 @@ interface SettingsType {
   themeColor?: { hex?: string };
 }
 
+type GalleryImageType = {
+  _id: string;
+  galleryImage: {
+    url: string;
+    alt: string;
+  };
+}[];
+
 export default async function SheetDemo() {
   const settings = (await client.fetch(settingsQuery)) as SettingsType | null;
   const herobanner = (await client.fetch(
     heroSectionQuery
   )) as HeroBannerType | null;
   const banner = (await client.fetch(catBannerQuery)) as BannerType | null;
+  const gallery = (await client.fetch(
+    homeGalleryQuery
+  )) as GalleryImageType | null;
 
   const faqs = [
     {
@@ -142,7 +154,16 @@ export default async function SheetDemo() {
         />
       )}
       <Faqs features={faqs} />
-      <Blufade />
+      <Blufade gallery={gallery ?? []} />
+
+      {gallery?.map((item) => (
+        <img
+          key={item._id}
+          src={item.galleryImage.url}
+          alt={item.galleryImage.alt}
+        />
+      ))}
+
       <Velocityscroll />
     </>
   );

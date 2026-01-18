@@ -109,6 +109,22 @@ export const heroSectionQuery = defineQuery(`
 `);
 
 
+export const homeGalleryQuery = defineQuery(`
+  *[_type == "gallery"]{
+    _id,
+    galleryImage{
+      alt,
+      "url": asset->url,
+      asset->{
+        metadata {
+          dimensions
+        }
+      }
+    }
+  }
+`);
+
+
 
 export async function getSiteSettings() {
   const query = `*[_type == "settings"][0]{fontStyle}`;
